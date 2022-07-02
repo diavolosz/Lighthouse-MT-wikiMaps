@@ -1,0 +1,141 @@
+
+
+
+$color1: #F16664;
+$color2: #FFF6E6;
+$color3: #0C7F98;
+$color4: #26195c;
+$color5: rgb(243, 235, 229);
+
+
+
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    $color1 0%,
+    $color1 43%,
+    $color2 43%,
+    $color2 100%,
+  );
+
+
+  header {
+    color: $color2;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 2em;
+
+    p {
+      margin-left: 1em;
+      margin-bottom: 1em;
+      font-size: 3.4em;
+    }
+  }
+
+  article {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin: auto;
+    margin-top: 5em;
+
+    #welcomePageMap img{
+      border-radius: 24px;
+      font-size: 2em;
+      width: 100%;
+      height: auto;
+      transform: scale(1.15);
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+
+    .welcomePin {
+      position: absolute;
+      z-index: 1;
+      color: $color3;
+      font-size: 2.7em;
+
+
+
+        #pin1 {
+          position: inherit;
+          z-index: inherit;
+          left: 125px;
+          bottom: 400px;
+          animation-duration: 9s;
+        }
+        #pin2 {
+          position: inherit;
+          z-index: inherit;
+          left: 340px;
+          bottom: 420px;
+          animation-duration: 4s;
+
+        }
+        #pin3 {
+          position: inherit;
+          z-index: inherit;
+          left: 220px;
+          bottom: 200px;
+          animation-duration: 7s;
+        }
+        #pin4 {
+          position: inherit;
+          z-index: inherit;
+          left: 600px;
+          bottom: 250px;
+          animation-duration: 8s;
+        }
+        #pin5 {
+          position: inherit;
+          z-index: inherit;
+          left: 100px;
+          bottom: 100px;
+          animation-duration: 3s;
+        }
+    }
+
+
+    .userButtons {
+      display: flex;
+      flex-direction: column;
+      background-color: $color5;
+      margin-top: 2em;
+      height: 22em;
+      width: 20em;
+      box-shadow: $color4 6px 8px;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      border-radius: 24px;
+
+      p {
+        position: relative;
+        text-align: center;
+        top: 5em;
+
+        .welcomeButton {
+          width: 80%;
+          height: 50px;
+          font-size: 24px;
+          border-radius: 14px;
+          border: none;
+          background-color: $color3;
+          color: $color2;
+
+          &:hover{
+            text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+            box-shadow: 0px 5px 15px rgb(136, 136, 136);
+            transition: all 0.4s ease 0s;
+          }
+        }
+      }
+    }
+  }
+}
+
+

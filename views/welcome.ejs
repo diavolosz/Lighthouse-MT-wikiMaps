@@ -15,12 +15,21 @@
   <!-- external script: font awesome-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+  <!-- external css for button  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap" rel="stylesheet" />
+  <!-- external css for fading from w3shool -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
 </head>
 
 <body>
 
   <header>
-    <i class="fa-solid fa-street-view"></i>
+    <p>
+      <i class="fa-solid fa-street-view"></i>
+    </p>
     <p>
       Some Fancy Slogan and Logo
     </p>
@@ -29,6 +38,18 @@
   <article>
     <div id="welcomePageMap">
       <img src="image/sampleMap.png">
+          <div class="welcomePin">
+            <i id="pin1" class="fa-solid fa-location-dot w3-animate-fading"></i>
+            <i id="pin2" class="fa-solid fa-location-dot w3-animate-fading"></i>
+            <i id="pin3" class="fa-solid fa-location-dot w3-animate-fading"></i>
+            <i id="pin4" class="fa-solid fa-location-dot w3-animate-fading"></i>
+            <i id="pin5" class="fa-solid fa-location-dot w3-animate-fading"></i>
+          </div>
+    </div>
+
+    <div class="userButtons">
+      <p><button id="loginButton" class="welcomeButton">Login</button></p>
+      <p><button id="signUpButton" class="welcomeButton">Sign Up</button></p>
     </div>
   </article>
 
