@@ -12,7 +12,7 @@ $color5: rgb(243, 235, 229);
   color: $color2;
 }
 
-.user-section ul {
+.user-section ul, .user-section div > div{
   height: 40vh;
   overflow-y: scroll;
 }
