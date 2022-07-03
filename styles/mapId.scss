@@ -1,0 +1,228 @@
+$color1: #F16664;
+$color2: #FFF6E6;
+$color3: #0C7F98;
+$color4: #26195c;
+$color5: rgb(243, 235, 229);
+$color6: #FC642D;
+$color7: #58bfd6;
+$color8: rgb(43, 23, 23);
+
+
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: $color2;
+
+  header {
+    background-color: #F16664;
+    margin: 0;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+
+    #logoName {
+      margin-left: 1em;
+      margin-bottom: 1em;
+      font-size: 2.2em;
+      display: flex;
+      margin-left: 3em;
+      margin-top: 0.2em;
+      color: $color2;
+
+
+      #logo {
+        position: relative;
+        top: -8px;
+        font-size: 40px;
+      }
+
+      #name {
+        margin-left: 20px;
+      }
+    }
+
+    #buttons {
+      display: flex;
+      justify-content: space-evenly;
+      position: relative;
+      top: 40px;
+      width: 55%;
+
+      .eachButton {
+        padding: 10px 50px;
+        width: 220px;
+        border: none;
+        border-radius: 12px;
+        background-color: $color2;
+        color: $color3;
+        font-size: 20px;
+        font-weight: bold;
+        transition: ease-in .2s;
+
+
+        &:hover {
+          cursor: pointer;
+          box-shadow: 0px 0px 14px white
+
+        }
+      }
+
+      #createMaps {
+        position: relative;
+        right: 15.5em;
+      }
+      #profile {
+        position: relative;
+        right: 2.5em;
+      }
+      #logout {
+        position: relative;
+        right: 2.5em;
+      }
+      #login {
+        position: relative;
+        left: 10em;
+      }
+      #register {
+        position: relative;
+        left: 2.5em;
+      }
+    }
+
+  }
+
+
+  article {
+    display: flex;
+    flex-direction: row;
+    width: 85%;
+    margin: auto;
+
+    #pinContainer {
+      background-color: white;
+      width: 25%;
+      border-radius: 24px;
+      box-shadow: rgba(175, 175, 175, 0.35) 0px 10px 10px;
+
+      #pinCollection {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: 0;
+        overflow-y: auto;
+        height:75vh;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+
+        .pin {
+          background-color: $color3;
+          text-align: center;
+          width: 300px;
+          border-radius: 15px;
+          margin-top: 15px;
+          color: $color2;
+          font-weight: bold;
+          font-size: 20px;
+          padding-top: 8px;
+          padding-bottom: 8px;
+          transition: ease-in .2s;
+
+          &:hover {
+            cursor: pointer;
+            background-color: $color7;
+            color: #FFF6E6;
+          }
+
+          .pinAddress {
+            background-color: $color2;
+            color: $color8;
+            text-align: center;
+            width: 90%;
+            border-radius: 15px;
+            margin: auto;
+            margin-top: 8px;
+            margin-bottom: 18px;
+            font-weight: bold;
+            font-size: 15px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            word-wrap: break-word;
+          }
+
+          .pinDescription {
+            background-color: $color2;
+            color: $color8;
+            text-align: center;
+            width: 90%;
+            border-radius: 15px;
+            margin: auto;
+            margin-top: 8px;
+            margin-bottom: 8px;
+            font-weight: bold;
+            font-size: 15px;
+            padding: 12px;
+            word-wrap: break-word;
+          }
+        }
+      }
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+
+
+      #mapName {
+        display: flex;
+
+        position: relative;
+        left: 8em;
+        height: 5vh;
+        background-color: $color3;
+        color: $color2;
+        padding-top: 17px;
+        padding-left: 20px;
+        width: 400px;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+
+        p {
+          margin-left: 10px;
+          position: relative;
+          top: -24px;
+          font-size: 23px;
+        }
+        button {
+          position: relative;
+          top: -5px;
+          background-color: transparent;
+          border: none;
+
+          i {
+            font-size: 25px;
+            color: $color2;
+            cursor: pointer;
+
+            &:hover {
+              color: $color1;
+            }
+          }
+        }
+      }
+
+      #map {
+        height: 73.5vh;
+        width: 60vw;
+        border: $color3 8px solid;
+        border-radius: 24px;
+        position: relative;
+        margin-left: 100px;
+      }
+    }
+  }
+}
