@@ -1,0 +1,111 @@
+$color1: #F16664;
+$color2: #FFF6E6;
+$color3: #0C7F98;
+$color4: #26195c;
+$color5: rgb(243, 235, 229);
+$color6: #FC642D;
+$color7: #58bfd6;
+$color8: rgb(43, 23, 23);
+
+
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: $color2;
+
+  header {
+    h1 {
+      background-color: #F16664;
+      margin: 0;
+      height: 100px;
+    }
+  }
+
+
+  article {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 85%;
+    margin: auto;
+
+    #pinContainer {
+      background-color: white;
+      width: 25%;
+      border-radius: 24px;
+      box-shadow: rgba(175, 175, 175, 0.35) 0px 10px 10px;
+
+      #pinCollection {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: 0;
+
+
+        .pin {
+          background-color: $color3;
+          text-align: center;
+          width: 300px;
+          border-radius: 15px;
+          margin-top: 15px;
+          color: $color2;
+          font-weight: bold;
+          font-size: 20px;
+          padding-top: 8px;
+          padding-bottom: 8px;
+          transition: ease-in .2s;
+
+          &:hover {
+            cursor: pointer;
+            background-color: $color7;
+            color: #FFF6E6;
+          }
+
+          .pinAddress {
+            background-color: $color2;
+            color: $color8;
+            text-align: center;
+            width: 90%;
+            border-radius: 15px;
+            margin: auto;
+            margin-top: 8px;
+            margin-bottom: 18px;
+            font-weight: bold;
+            font-size: 15px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            word-wrap: break-word;
+          }
+
+          .pinDescription {
+            background-color: $color2;
+            color: $color8;
+            text-align: center;
+            width: 90%;
+            border-radius: 15px;
+            margin: auto;
+            margin-top: 8px;
+            margin-bottom: 8px;
+            font-weight: bold;
+            font-size: 15px;
+            padding: 12px;
+            word-wrap: break-word;
+          }
+        }
+      }
+    }
+
+
+    #map {
+      height: 75vh;
+      width: 70%;
+      border: $color3 8px solid;
+      border-radius: 24px;
+    }
+
+  }
+
+}
