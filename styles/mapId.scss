@@ -17,11 +17,81 @@ body {
   background-color: $color2;
 
   header {
-    h1 {
-      background-color: #F16664;
-      margin: 0;
-      height: 100px;
+    background-color: #F16664;
+    margin: 0;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+
+    #logoName {
+      margin-left: 1em;
+      margin-bottom: 1em;
+      font-size: 2.2em;
+      display: flex;
+      margin-left: 3em;
+      margin-top: 0.2em;
+      color: $color2;
+
+
+      #logo {
+        position: relative;
+        top: -8px;
+        font-size: 40px;
+      }
+
+      #name {
+        margin-left: 20px;
+      }
     }
+
+    #buttons {
+      display: flex;
+      justify-content: space-evenly;
+      position: relative;
+      top: 40px;
+      width: 55%;
+
+      .eachButton {
+        padding: 10px 50px;
+        width: 220px;
+        border: none;
+        border-radius: 12px;
+        background-color: $color2;
+        color: $color3;
+        font-size: 20px;
+        font-weight: bold;
+        transition: ease-in .2s;
+
+
+        &:hover {
+          cursor: pointer;
+          box-shadow: 0px 0px 14px white
+
+        }
+      }
+
+      #createMaps {
+        position: relative;
+        right: 15.5em;
+      }
+      #profile {
+        position: relative;
+        right: 2.5em;
+      }
+      #logout {
+        position: relative;
+        right: 2.5em;
+      }
+      #login {
+        position: relative;
+        left: 10em;
+      }
+      #register {
+        position: relative;
+        left: 2.5em;
+      }
+    }
+
   }
 
 
@@ -105,7 +175,7 @@ body {
 
 
     #map {
-      height: 75vh;
+      height: 80vh;
       width: 70%;
       border: $color3 8px solid;
       border-radius: 24px;
