@@ -73,6 +73,10 @@ app.get("/template", (req, res) => {
   res.render("template");
 });
 
+app.get("/logout", (req, res) => {
+  res.redirect("/welcome");
+});
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
