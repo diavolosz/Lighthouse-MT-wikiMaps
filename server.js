@@ -54,6 +54,18 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.get("/welcome", (req, res) => {
+  res.render("welcome");
+});
+
+app.get("/map/:id", (req, res) => {
+  res.render("mapId");
+});
+
+app.get("/template", (req, res) => {
+  res.render("template");
+});
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });

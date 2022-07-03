@@ -1,0 +1,23 @@
+
+$color1: #F16664;
+$color2: #FFF6E6;
+$color3: #0C7F98;
+$color4: #26195c;
+$color5: rgb(243, 235, 229);
+
+#map {
+  flex: 1 1;
+  height: 40em;
+  max-width: 800em;
+  margin: 50px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.accordion {
+  min-width: 20em;
+  max-width: 20em;
+}
