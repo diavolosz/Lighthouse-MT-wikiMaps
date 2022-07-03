@@ -60,6 +60,10 @@ app.get("/map/:id", (req, res) => {
   res.render("mapId");
 });
 
+app.get("/template", (req, res) => {
+  res.render("template");
+});
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
