@@ -187,4 +187,22 @@ const addFavourites = function (favourite) {          //variable taken as object
 
 
 
-module.exports = {}
+module.exports = {
+  getAllUsers,
+  getUserWithEmail,
+  getUserWithName,
+  getUserWithID,
+  addUser,
+  getAllMaps,
+  getMapByName,
+  addMap,
+  getAllPins,
+  getPinByID,
+  getPinByName,
+  getPinByMapID,
+  getPinByUserID,
+  addPin,
+  getFavouritesByUserID,
+  getFavouritesByMapID,
+  addFavourites
+};
