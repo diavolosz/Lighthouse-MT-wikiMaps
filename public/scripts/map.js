@@ -1,7 +1,5 @@
 
 let initialMapCentre = [43.663937824894184, -79.39198578896757]
-
-
 let map = L.map('map').setView(initialMapCentre, 16);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -17,14 +15,16 @@ const pinIcon = L.icon({
   iconSize: [60, 60]
 })
 
+let pinPopUp = L.popup();
+
 
 
 // temperory marker location database object
 
 let locations = {
   pin1: {
-    lat:43.66628167959075,
-    long:-79.39462508254417
+    lat:43.66787265466534,
+    long:-79.38885296889084
   },
   pin2: {
     lat:43.66446558824718,
@@ -47,10 +47,8 @@ let locations = {
 
 
 //function to show popup
-let popup = L.popup();
-
-function onMapClick(pin) {
-  popup
+const onMapClick = function(pin) {
+  pinPopUp
   .setLatLng(pin.latlng)
   .setContent("You clicked the map at " + pin.latlng.toString())
   .openOn(map);
@@ -61,16 +59,17 @@ function onMapClick(pin) {
 const generatePinOnMap = function(database) {
   for (let eachPin in database) {
     let lat = database[eachPin].lat
-    console.log(lat)
     let long = database[eachPin].long
-    console.log(long)
-    marker = new L.marker([lat, long], {icon: pinIcon})
-      .addTo(map);
+    marker = new L.marker([lat, long], {icon: pinIcon}).addTo(map);
     marker.on('click', onMapClick);
-    }
+    marker.on('click', flyTo(L.latLng(lat, long)));
+  }
   return
 }
 generatePinOnMap(locations)
+
+
+
 
 
 

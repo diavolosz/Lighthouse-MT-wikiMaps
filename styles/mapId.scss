@@ -98,7 +98,6 @@ body {
   article {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     width: 85%;
     margin: auto;
 
@@ -173,14 +172,57 @@ body {
       }
     }
 
+    div {
+      display: flex;
+      flex-direction: column;
 
-    #map {
-      height: 80vh;
-      width: 70%;
-      border: $color3 8px solid;
-      border-radius: 24px;
+
+      #mapName {
+        display: flex;
+
+        position: relative;
+        left: 8em;
+        height: 5vh;
+        background-color: $color3;
+        color: $color2;
+        padding-top: 17px;
+        padding-left: 20px;
+        width: 400px;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+
+        p {
+          margin-left: 10px;
+          position: relative;
+          top: -24px;
+          font-size: 23px;
+        }
+        button {
+          position: relative;
+          top: -5px;
+          background-color: transparent;
+          border: none;
+
+          i {
+            font-size: 25px;
+            color: $color2;
+            cursor: pointer;
+
+            &:hover {
+              color: $color1;
+            }
+          }
+        }
+      }
+
+      #map {
+        height: 73.5vh;
+        width: 60vw;
+        border: $color3 8px solid;
+        border-radius: 24px;
+        position: relative;
+        margin-left: 100px;
+      }
     }
-
   }
-
 }
