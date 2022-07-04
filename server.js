@@ -35,22 +35,25 @@ app.use(express.static("public"));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const usersRoutes = require("./routes/users");
-const widgetsRoutes = require("./routes/widgets");
+const userRouter = require("./routes/user-route");
 const mapRoutes = require("./routes/maps");
 const authRouter = require("./routes/auth-router");
 const registerRouter = require("./routes/register-router");
-const userRouter = require("./routes/user-route");
+
+
+const usersRoutes = require("./routes/users");
+const widgetsRoutes = require("./routes/widgets");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/api/users", usersRoutes(db));
-app.use("/api/widgets", widgetsRoutes(db));
+app.use("/user/:id", userRouter(db));
 app.use("/maps/new", mapRoutes);
-
 app.use("/login", authRouter);
 app.use("/register", registerRouter);
-app.use("/user/:id", userRouter);
+
+
+app.use("/api/users", usersRoutes(db));
+app.use("/api/widgets", widgetsRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -58,19 +61,7 @@ app.use("/user/:id", userRouter);
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.render("index");
-});
-
-app.get("/welcome", (req, res) => {
   res.render("welcome");
-});
-
-app.get("/map/:id", (req, res) => {
-  res.render("mapId");
-});
-
-app.get("/template", (req, res) => {
-  res.render("template");
 });
 
 app.listen(PORT, () => {
