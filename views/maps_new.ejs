@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
+  <title>Create Map</title>
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -24,31 +24,29 @@
 </head>
 
 <body>
-  <section class="d-flex justify-content-center align-items-center">
-    <div id="map" class="shadow-lg"></div>
-  </section>
-  <section class="d-flex justify-content-center align-items-center">
+  <section class="form-section d-flex justify-content-center align-items-center">
     <div class="border border-light p-5 border border-1 rounded shadow">
       <div class="d-flex justify-content-center align-items-center mb-3">
         <i class="fa-solid fa-map-location-dot h1"></i>
       </div>
-      <p class="text-center mb-4 h5">Create Map</p>
+      <p class="text-center text-white mb-4 h5">Create Map</p>
       <form class="d-flex flex-column justify-content-center" method="POST" action="../maps">
         <div class="form-floating mb-3">
           <input type="text" id="mapName" class="form-control text-muted" placeholder="Name" name="name" required>
           <label class="text-muted" for="mapName">Name</label>
         </div>
-        <label class="text-muted mb-1" for="lat">Latitude</label>
+        <label class="text-white mb-1" for="lat">Latitude</label>
         <input type="number" required  class="form-control mb-3 text-muted" name="lat" min="-90" max="90" value="" step="any">
-        <label class="text-muted mb-1" for="long">Longitude</label>
+        <label class="text-white mb-1" for="long">Longitude</label>
         <input type="number" required class="form-control text-muted" name="long" min="-180" max="180" value="" step="any">
         <div>
-          <button type="submit" class="form-control btn btn-success my-3">Create</button>
+          <button type="submit" class="form-control btn mt-4">Create</button>
         </div>
       </form>
     </div>
   </section>
-  <section class="d-flex justify-content-center align-items-center">
+  <section class="map-section d-flex justify-content-center align-items-center">
+    <div id="map" class="shadow-lg"></div>
   </section>
   <script type="text/javascript" src="/scripts/maps_new.js"></script>
 </body>
