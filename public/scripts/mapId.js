@@ -62,7 +62,7 @@ const generatePinOnMap = function(database) {
     let long = database[eachPin].long
     marker = new L.marker([lat, long], {icon: pinIcon}).addTo(map);
     marker.on('click', onMapClick);
-    marker.on('click', flyTo(L.latLng(lat, long)));
+    // marker.on('click', flyTo(L.latLng(lat, long)));
   }
   return
 }
