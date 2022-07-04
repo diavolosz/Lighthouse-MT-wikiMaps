@@ -9,9 +9,12 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 const popup = L.popup(); // Initialize popup
 
 const formatLatLng = (str) => {
-  `Helper function to format latlng event property
-  >>>
-  `
+  /**
+   * Converts str to a user-friendly format. Does not mutate str.
+   * @param  {String} str  String containing a set of geo-coordinates in the format LatLng(50, 50)
+   * @return {String} String containing latitude and longitude values from str, labelled and comma-seperated. i.e. Latitude: 50, Longitude: 50
+   */
+
   const extractedLat = str.slice(7, 16);
   const extractedLng = str.slice(19, 27);
   return `Latitude: ${extractedLat}, Longitude: ${extractedLng}`;
