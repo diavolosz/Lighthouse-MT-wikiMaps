@@ -39,6 +39,8 @@ const userRouter = require("./routes/user-router");
 const mapRoutes = require("./routes/maps");
 const authRouter = require("./routes/auth-router");
 const registerRouter = require("./routes/register-router");
+const mapIdRouter = require("./routes/mapId-router");
+const pinEditRouter = require("./routes/pinEdit-router");
 
 
 const usersRoutes = require("./routes/users");
@@ -50,6 +52,8 @@ app.use("/user/:id", userRouter(db));
 app.use("/maps/new", mapRoutes);
 app.use("/login", authRouter);
 app.use("/register", registerRouter);
+app.use("/map/:id", mapIdRouter);
+app.use("/pin/:id/edit", pinEditRouter);
 
 
 app.use("/api/users", usersRoutes(db));
@@ -63,6 +67,11 @@ app.use("/api/widgets", widgetsRoutes(db));
 app.get("/", (req, res) => {
   res.render("welcome");
 });
+
+app.get("/logout", (req, res) => {
+  res.redirect("/");
+});
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

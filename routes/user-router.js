@@ -19,7 +19,7 @@ module.exports = (db) => {
           pin1name: pins[0].name,
           pin2name: pins[1].name
         }
-        res.render('template_mapId', variables);
+        res.render('user', variables);
       })
       .catch(err => {
         res

@@ -173,9 +173,6 @@ body {
     }
 
     div {
-      display: flex;
-      flex-direction: column;
-
 
       #mapName {
         display: flex;
@@ -222,6 +219,17 @@ body {
         border-radius: 24px;
         position: relative;
         margin-left: 100px;
+
+        .leaflet-popup-content-wrapper {
+          background-color: $color3;
+          font-size: 12px;
+          font-weight: bold;
+          color: $color2;
+          border: $color2 solid 2px;
+        }
+        .leaflet-popup-tip {
+          background-color: $color2;
+        }
       }
     }
   }
