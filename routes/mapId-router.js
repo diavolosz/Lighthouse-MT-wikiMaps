@@ -1,25 +1,22 @@
 const express = require('express');
-const router  = express.Router();
-const userQuery = require ('../db/user_helpers');
-const pinQuery = require ('../db/pin_helpers');
+const router = express.Router();
+const userQuery = require('../db/user_helpers');
+const pinQuery = require('../db/pin_helpers');
 
 // router.get("/:id", (req, res) => {
 //   res.render("mapId");
 // });
 
 // module.exports = router;
-
 module.exports = (db) => {
   router.get("/:id", (req, res) => {
-    pinQuery.getPinsByMapID(2)
+    pinQuery.getPinsByMapID(req.params.id)
       .then((pins) => {
-        let variables = {};
-
-
-
-
-
-        res.render('template_mapId', variables);
+        let templateVar = {
+          pins: pins
+        };
+        console.log (templateVar)
+        res.render('template_mapId', templateVar);
       })
       .catch(err => {
         res
