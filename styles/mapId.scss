@@ -7,9 +7,6 @@ $color6: #FC642D;
 $color7: #58bfd6;
 $color8: rgb(43, 23, 23);
 
-
-
-
 body {
   display: flex;
   flex-direction: column;
@@ -17,7 +14,7 @@ body {
   background-color: $color2;
 
   header {
-    background-color: #F16664;
+    background-color: $color1;
     margin: 0;
     height: 100px;
     display: flex;

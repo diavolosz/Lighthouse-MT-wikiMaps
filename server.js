@@ -52,7 +52,7 @@ app.use("/user/:id", userRouter(db));
 app.use("/maps/new", mapRoutes);
 app.use("/login", authRouter);
 app.use("/register", registerRouter);
-app.use("/map/:id", mapIdRouter);
+app.use("/map", mapIdRouter(db));
 app.use("/pin/:id/edit", pinEditRouter);
 
 
