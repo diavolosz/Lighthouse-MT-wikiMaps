@@ -1,6 +1,34 @@
+$color1: #F16664;
+$color2: #FFF6E6;
+$color3: #0C7F98;
+$color4: #26195c;
+$color5: rgb(243, 235, 229);
+$color6: #FC642D;
+$color7: #58bfd6;
+$color8: rgb(43, 23, 23);
+
+
+
+
 body {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: linear-gradient(
+    to right,
+    $color1 0%,
+    $color1 50%,
+    $color2 50%,
+    $color2 100%,
+  );
+
+  section {
+
+    #container {
+      background: linear-gradient(
+        to left, #ffcbca, $color2
+      );
+    }
+  }
 }

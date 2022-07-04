@@ -114,10 +114,11 @@ body {
       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       border-radius: 24px;
 
-      p {
+      form {
         position: relative;
         text-align: center;
         top: 5em;
+        margin-bottom: 35px;
 
         .welcomeButton {
           width: 80%;
