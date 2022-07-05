@@ -57,7 +57,7 @@ const getPinsByMapID = function (map_id, user_id) {
 const getPinByUserID = function (user_id) {
   return db.query(`SELECT * FROM pins WHERE user_id = $1;`, [user_id])
     .then((result) => {
-      return (result.rows[0]);
+      return (result.rows);
     })
     .catch((error) => {
       console.log(error.message);

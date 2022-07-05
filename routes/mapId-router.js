@@ -13,9 +13,9 @@ module.exports = (db) => {
     pinQuery.getPinsByMapID(req.params.id)
       .then((pins) => {
         let templateVar = {
-          pins: pins
+          'pins': pins
         };
-        console.log (templateVar)
+
         res.render('template_mapId', templateVar);
       })
       .catch(err => {

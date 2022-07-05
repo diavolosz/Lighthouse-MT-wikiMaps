@@ -2,30 +2,45 @@ const express = require('express');
 const router  = express.Router();
 const userQuery = require ('../db/user_helpers');
 const pinQuery = require ('../db/pin_helpers');
+const favQuery = require ('../db/favourite_helpers');
+const mapQuery = require ('../db/map_helpers');
 
-// starts with /user
 
-// router.get("/", (req, res) => {
-//   res.render("user");
-// });
-
-// module.exports = router;
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    pinQuery.getPinsByMapID(2, 2)
-      .then((pins) => {
-        let variables  = {
-          pin1name: pins[0].name,
-          pin2name: pins[1].name
+
+    let favouriteMaps
+    let contributedMaps
+    let myMaps
+    let test = "testing"
+    let user = 2
+
+      let p1 = favQuery.getFavouritesByUserID(user)
+        .then((respond) => {
+          favouriteMaps = respond
+          console.log(favouriteMaps)
+        })
+      let p2 = pinQuery.getPinByUserID(user)
+        .then((respond) => {
+          contributedMaps = respond
+          console.log(contributedMaps)
+        })
+      let p3 = mapQuery.getMapsByUserId(user)
+        .then((respond) => {
+          myMaps = respond
+          console.log(myMaps)
+        })
+
+      Promise.all([p1, p2, p3]).then(() => {
+        let templateVars = {
+          favouriteMaps: favouriteMaps,
+          contributedMaps: contributedMaps,
+          myMaps: myMaps,
+          test: test
         }
-        res.render('user', variables);
+        res.render('user', templateVars);
       })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
   });
   return router;
 };

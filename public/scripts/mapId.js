@@ -7,9 +7,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '© OpenStreetMap'
 }).addTo(map);
 
-
-
-
 const pinIcon = L.icon({
   iconUrl: '/image/pinIcon.png',
   iconSize: [60, 60]
@@ -21,28 +18,28 @@ let pinPopUp = L.popup();
 
 // temperory marker location database object
 
-let locations = {
-  pin1: {
-    lat: 43.66787265466534,
-    long: -79.38885296889084
-  },
-  pin2: {
-    lat: 43.66446558824718,
-    long: -79.39230765399577
-  },
-  pin3: {
-    lat: 43.66219151608988,
-    long: -79.38661064209391
-  },
-  pin4: {
-    lat: 43.66282019311965,
-    long: -79.39571942382528
-  },
-  pin5: {
-    lat: 43.66614974316886,
-    long: -79.39622367911178
-  }
-}
+// let locations = {
+//   pin1: {
+//     lat: 43.66787265466534,
+//     long: -79.38885296889084
+//   },
+//   pin2: {
+//     lat: 43.66446558824718,
+//     long: -79.39230765399577
+//   },
+//   pin3: {
+//     lat: 43.66219151608988,
+//     long: -79.38661064209391
+//   },
+//   pin4: {
+//     lat: 43.66282019311965,
+//     long: -79.39571942382528
+//   },
+//   pin5: {
+//     lat: 43.66614974316886,
+//     long: -79.39622367911178
+//   }
+// }
 
 
 
@@ -67,30 +64,15 @@ const generatePinOnMap = function (database) {
   return
 }
 
-generatePinOnMap(locations)
+//generatePinOnMap(locations)
 
-for (let pin of pins) {
 
-console.log (pins)
-
-  let accordionItem = `
-  <div class="accordion-item">
-  <h2 class="accordion-header" id="headingOne">
-  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-    aria-expanded="true" aria-controls="collapseOne">
-    pin 1 ${pin.name}
-  </button>
-  </h2>
-  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-  data-bs-parent="#accordionExample">
-  <div class="accordion-body">
-    pin 1 info ${pin.description}
-  </div>
-  </div>
-  </div>`;
-
-  $('.accordion').append(accordionItem);
-
-};
-
+// $.ajax({
+//   type: 'GET',
+//   url: "/map/2",
+//   dataType: 'json',
+//   success: (res) => {
+//     console.log(res);
+//   }
+// });
 

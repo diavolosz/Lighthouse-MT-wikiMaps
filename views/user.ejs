@@ -36,8 +36,13 @@
       <section class="col-4 user-section">
         <h3 class="text-center h6">Favorites</h3>
         <div class="card m-3 shadow">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item"><a href="">Tokyo restaurants</a></li>
+          <ul id="favourite" class="list-group list-group-flush">
+            <% for ( let each of favouriteMaps) { %>
+              <li class="list-group-item"><a href=""> <%= each.name %> </a></li>
+            <% } %>
+
+
+            <!-- <li class="list-group-item"><a href="">Tokyo restaurants</a></li>
             <li class="list-group-item"><a href="">Golf courses in Markham</a></li>
             <li class="list-group-item"><a href="">Italian food spots</a></li>
             <li class="list-group-item"><a href="">Bubble tea in Vancouver</a></li>
@@ -48,29 +53,35 @@
             <li class="list-group-item"><a href="">Arcades</a></li>
             <li class="list-group-item"><a href="">VIP Theatres</a></li>
             <li class="list-group-item"><a href="">Parks in Toronto</a></li>
-            <li class="list-group-item"><a href="">Cottage country</a></li>
+            <li class="list-group-item"><a href="">Cottage country</a></li> -->
           </ul>
         </div>
       </section>
       <section class="col-4 user-section">
         <h3 class="text-center h6">My Maps</h3>
         <div class="card m-3 shadow">
-          <div class="d-flex justify-content-center align-items-center">
-            <p class="text-center text-muted">You have no maps.<p>
-          </div>
+          <ul class="list-group list-group-flush">
+            <% for ( let each of myMaps) { %>
+              <li class="list-group-item"><a href=""> <%= each.name %> </a></li>
+            <% } %>
+          </ul>
         </div>
       </section>
       <section class="col-4 user-section">
         <h3 class="text-center h6">Contributions</h3>
         <div class="card m-3 shadow">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item"><a href=""><%= pin1name %></a></li>
+            <% for ( let each of contributedMaps) { %>
+              <li class="list-group-item"><a href=""> <%= each.name %> </a></li>
+            <% } %>
+
+            <!-- <li class="list-group-item"><a href="">testing</a></li>
             <li class="list-group-item"><a href="">Public libraries in York</a></li>
             <li class="list-group-item"><a href="">Tourist attractions in Rome</a></li>
             <li class="list-group-item"><a href="">Places to eat in Singapore</a></li>
             <li class="list-group-item"><a href="">Dog parks in the GTA</a></li>
             <li class="list-group-item"><a href="">Gyms in the city</a></li>
-            <li class="list-group-item"><a href="">Apple stores in San Francisco</a></li>
+            <li class="list-group-item"><a href="">Apple stores in San Francisco</a></li> -->
           </ul>
         </div>
       </section>

@@ -1,5 +1,6 @@
 // PG database client/connection setup
 const { Pool } = require("pg");
+const { user } = require("pg/lib/defaults.js");
 const dbParams = require("../lib/db.js");
 const db = new Pool(dbParams);
 db.connect();
@@ -36,8 +37,26 @@ const addMap = function (map) {                          //variable taken as obj
     });
 };
 
+const getMapsByUserId = function (user_id) {
+  return db.query(`SELECT maps.name as name,
+                          latitude,
+                          longitude,
+                          maps.id as id
+                    FROM maps
+                    JOIN users ON maps.user_id = users.id
+                    WHERE users.id = $1;`, [user_id])
+    .then((result) => {
+      return (result.rows);
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
+};
+
+
 module.exports = {
   getAllMaps,
   getMapByName,
-  addMap
+  addMap,
+  getMapsByUserId
 };
