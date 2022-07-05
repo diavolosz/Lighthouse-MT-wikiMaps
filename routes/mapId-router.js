@@ -10,10 +10,17 @@ const pinQuery = require('../db/pin_helpers');
 // module.exports = router;
 module.exports = (db) => {
   router.get("/:id", (req, res) => {
+    let user = null;
+    userQuery.getUserWithID(req.session.user_id).then((result) => {
+      if (result) {
+        user = result;
+      }
+    });
     pinQuery.getPinsByMapID(req.params.id)
       .then((pins) => {
         let templateVar = {
-          'pins': pins
+          'pins': pins,
+          user
         };
 
         res.render('template_mapId', templateVar);
