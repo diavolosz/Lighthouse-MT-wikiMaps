@@ -50,12 +50,12 @@ router.post("/", (req, res) => {
         });
       } else {
         // Send error if email already exists in database
-          return res.render("register", "That email address is unavailable.");
+          return res.render("register", { error: "That email address is unavailable." });
         }
       });
     } else {
       // Send error if username already exists in database
-      return res.render("register", "That username is unavailable.");
+      return res.render("register", { error: "That username is unavailable."});
     }
   });
 });
