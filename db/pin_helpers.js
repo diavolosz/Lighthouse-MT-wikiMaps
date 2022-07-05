@@ -7,7 +7,7 @@ db.connect();
 const getAllPins = function () {
   return db.query(`SELECT * FROM pins;`)
     .then((result) => {
-      return (result.rows[0]);
+      return (result.rows);
     })
     .catch((error) => {
       console.log(error.message);

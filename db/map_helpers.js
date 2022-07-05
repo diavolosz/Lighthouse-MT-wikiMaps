@@ -53,10 +53,22 @@ const getMapsByUserId = function (user_id) {
     });
 };
 
+const getMapById = function (map_id) {
+  return db.query(`SELECT * FROM maps WHERE maps.id = $1`, [map_id])
+    .then((result) => {
+      return (result.rows[0]);
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
+
+}
+
 
 module.exports = {
   getAllMaps,
   getMapByName,
   addMap,
-  getMapsByUserId
+  getMapsByUserId,
+  getMapById
 };
