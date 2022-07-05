@@ -21,6 +21,7 @@ router.post("/", (req, res) => {
 
   // Extract form data
   let { name, email } = req.body;
+  name = name.trim();
   email = email.trim();
   const formPassword = req.body.password;
 
@@ -28,12 +29,11 @@ router.post("/", (req, res) => {
     return res.render("register", { error: "Please fill in all fields." });
   }
 
-  if (name.match(/\s/g) !== -1) {
+  if (name.search(/\s/g) !== -1) {
     return res.render("register", { error: "Username cannot contain spaces." });
   }
 
-  name = name.trim().replace(/ /g, '').toLowerCase();
-
+  name = name.replace(/ /g, '').toLowerCase();
 
   // Check if username already exists in database
   user_helpers.getUserWithName(name).then((result) => {
