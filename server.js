@@ -5,6 +5,8 @@ require("dotenv").config();
 const PORT = process.env.PORT || 8080;
 const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
+const cookieSession = require('cookie-session'); // Create encrypted cookie sessions
+
 const app = express();
 const morgan = require("morgan");
 
@@ -21,6 +23,15 @@ app.use(morgan("dev"));
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
+
+const cookieKey = process.env.KEY || 'NchentiOUSTlEtaBlIgNuLAPHOthItcHIETeUMEDAtinaUlaroalPhesTRaGeriCamATIOUdecaDefuLtzecodIeLagOuStoLcI';
+
+app.use(cookieSession({
+  name: 'session',
+  keys: [
+    cookieKey
+  ]
+}));
 
 app.use(
   "/styles",
