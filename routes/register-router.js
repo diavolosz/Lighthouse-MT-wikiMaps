@@ -46,7 +46,7 @@ router.post("/", (req, res) => {
         user_helpers.addUser({ name, email, password })
         .then((user) => {
           req.session.user_id = user.id;
-          return res.redirect('/')
+          return res.redirect(`/user/${user.id}`);
         });
       } else {
         // Send error if email already exists in database
