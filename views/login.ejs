@@ -27,7 +27,13 @@
 <body>
   <section class="d-flex justify-content-center align-items">
     <div id="container" class="border border-light p-5 border border-1 rounded shadow">
-      <h2 class="text-center mb-4">Login</h2>
+      <% if(error) { %>
+      <div class="alert alert-danger bg-danger text-light alert-dismissible fade show" role="alert">
+        <p class="fw-bold text-center mb-0">Invalid credentials provided.</p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      <% } %>
+      <p class="text-center mb-4 h4">Login</p>
       <form class="d-flex flex-column justify-content-center align-item" method="POST" action="login">
         <div class="form-floating mb-3">
           <input type="email" id="loginEmail" class="form-control" placeholder="Email" name="email">
@@ -38,11 +44,12 @@
           <label for="loginPassword">Password</label>
         </div>
         <div class="">
-          <button type="submit" class="form-control btn btn-outline-danger my-3">Login</button>
+          <button type="submit" class="form-control btn btn-success mt-5">Log In</button>
         </div>
       </form>
     </div>
   </section>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 
 </html>
