@@ -6,7 +6,7 @@ const user_helpers = require("../db/user_helpers"); // Database helper queries
 
 // Render register page
 router.get("/", (req, res) => {
-  res.render("register");
+  res.render("register", { error: false });
 });
 
 // Register user
@@ -17,6 +17,10 @@ router.post("/", (req, res) => {
   name = name.trim().replace(/ /g,'').toLowerCase();
   email = email.trim();
   const formPassword = req.body.password;
+
+  if (!name || !email || !formPassword) {
+    return res.render("register", { error: "Please fill in all fields." });
+  }
 
   // Check if username already exists in database
   user_helpers.getUserWithName(name).then((result) => {
@@ -33,12 +37,12 @@ router.post("/", (req, res) => {
         });
       } else {
         // Send error if email already exists in database
-          return res.send("That email address is unavailable.");
+          return res.render("register", "That email address is unavailable.");
         }
       });
     } else {
       // Send error if username already exists in database
-      return res.send("Username taken.");
+      return res.render("register", "That username is unavailable.");
     }
   });
 });

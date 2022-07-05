@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs"); // Hashing library
 const user_helpers = require("../db/user_helpers");
 
 router.get("/", (req, res) => {
-  res.render("login");
+  res.render("login", { error: false });
 });
 
 router.post("/", (req, res) => {
@@ -15,14 +15,14 @@ router.post("/", (req, res) => {
 
   user_helpers.getUserWithEmail(email).then((user) => {
     if (!user) {
-      return res.send('Invalid credentials');
+      return res.render("login", { error: true });
     }
 
     id = user.id;
     const dbPassword = user.password;
 
     if (!(bcrypt.compareSync(formPassword, dbPassword))) {
-      return res.send('Invalid credentials');
+      return res.render("login", { error: true });
     }
 
     req.session.user_id = id;
@@ -30,7 +30,7 @@ router.post("/", (req, res) => {
 
   }).catch((err) => {
     console.log(err)
-    res.send("Invalid credentials.");
+    return res.render("login", { error: true });
   });
 
 });
