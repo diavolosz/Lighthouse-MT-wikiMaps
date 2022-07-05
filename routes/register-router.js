@@ -13,7 +13,9 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
 
   // Extract form data
-  const { name, email } = req.body;
+  let { name, email } = req.body;
+  name = name.trim().replace(/ /g,'').toLowerCase();
+  email = email.trim();
   const formPassword = req.body.password;
 
   // Check if username already exists in database
