@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/new', (req, res) => {
-  res.render("maps_new");
+  res.render("maps_new", { error: false });
 });
 
 router.post('/', (req, res) => {
@@ -25,13 +25,17 @@ router.post('/', (req, res) => {
   let id = req.session.user_id;
    userQuery.getUserWithID(id).then((result) => {
     if (!result) {
-      return res.send("You must be logged in to perform that action.");
+      return res.render("maps_new", { error: "You must be logged in to perform that action." });
     }
 
-    const { name, lat, long } = req.body;
+    let { name, lat, long } = req.body;
+    name = name.trim();
 
+    if (!name || ! lat || !long) {
+      return res.render("maps_new", { error: "Please fill out all fields." });
+    }
     if (!helpers.validateLatLng({ lat, long })) {
-      return res.send(`You entered invalid coordinates.`);
+      return res.render("maps_new", { error: "You entered invalid coordinates." });
     }
 
     mapQuery.addMap({
@@ -40,7 +44,9 @@ router.post('/', (req, res) => {
       longitude: long,
       user_id: id
     }).then(result => {
+
       return res.redirect(`/map/${result.id}`);
+
     });
   });
 
