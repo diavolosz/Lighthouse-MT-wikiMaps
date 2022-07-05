@@ -21,6 +21,10 @@ router.post("/", (req, res) => {
   const formPassword = req.body.password;
   let id;
 
+  if (!email || !formPassword) {
+    return res.render("login", { error: true });
+  }
+
   user_helpers.getUserWithEmail(email).then((user) => {
     if (!user) {
       return res.render("login", { error: true });
