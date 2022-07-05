@@ -27,11 +27,17 @@
 <body>
   <section class="register-section d-flex justify-content-center align-items">
     <div id="container" class="border border-light p-5 border border-1 rounded shadow">
+      <% if(error) { %>
+        <div class="alert alert-danger bg-danger text-light alert-dismissible fade show" role="alert">
+          <p class="fw-bold text-center mb-0"><%= error %></p>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <% } %>
       <p class="text-center mb-4 h3">Sign Up</p>
       <form class="d-flex flex-column justify-content-center align-items" method="POST" action="register">
         <div class="form-floating mb-3">
           <input type="text" id="registerName" class="form-control" placeholder="Name" name="name">
-          <label for="registerName" class="text-muted">Name</label>
+          <label for="registerName" class="text-muted">Username</label>
         </div>
         <div class="form-floating mb-3">
           <input type="email" id="registerEmail" class="form-control" placeholder="Email" name="email">
@@ -42,11 +48,12 @@
           <label for="registerPassword" class="text-muted">Password</label>
         </div>
         <div>
-          <button type="submit" class="form-control btn btn-outline-primary my-3">Sign up</button>
+          <button type="submit" class="form-control btn btn-primary mt-5">Sign up</button>
         </div>
       </form>
     </div>
   </section>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 
 </html>

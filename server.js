@@ -5,6 +5,8 @@ require("dotenv").config();
 const PORT = process.env.PORT || 8080;
 const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
+const cookieSession = require('cookie-session'); // Create encrypted cookie sessions
+
 const app = express();
 const morgan = require("morgan");
 
@@ -22,6 +24,15 @@ app.use(morgan("dev"));
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 
+const cookieKey = process.env.KEY || 'NchentiOUSTlEtaBlIgNuLAPHOthItcHIETeUMEDAtinaUlaroalPhesTRaGeriCamATIOUdecaDefuLtzecodIeLagOuStoLcI';
+
+app.use(cookieSession({
+  name: 'session',
+  keys: [
+    cookieKey
+  ]
+}));
+
 app.use(
   "/styles",
   sassMiddleware({
@@ -38,10 +49,10 @@ app.use(express.static("public"));
 const userRouter = require("./routes/user-router");
 const mapRoutes = require("./routes/maps");
 const authRouter = require("./routes/auth-router");
+const logoutRouter = require("./routes/logout-router");
 const registerRouter = require("./routes/register-router");
 const mapIdRouter = require("./routes/mapId-router");
 const pinEditRouter = require("./routes/pinEdit-router");
-
 
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
@@ -52,8 +63,9 @@ app.use("/user/:id", userRouter(db));
 app.use("/maps/new", mapRoutes);
 app.use("/login", authRouter);
 app.use("/register", registerRouter);
-app.use("/map/:id", mapIdRouter);
+app.use("/map", mapIdRouter(db));
 app.use("/pin/:id/edit", pinEditRouter);
+app.use("/logout", logoutRouter);
 
 
 app.use("/api/users", usersRoutes(db));
@@ -67,11 +79,6 @@ app.use("/api/widgets", widgetsRoutes(db));
 app.get("/", (req, res) => {
   res.render("welcome");
 });
-
-app.get("/logout", (req, res) => {
-  res.redirect("/");
-});
-
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

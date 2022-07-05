@@ -15,7 +15,7 @@ const getAllUsers = function () {
 };
 
 const getUserWithEmail = function (email) {
-  return db.query(`SELECT * FROM users WHERE email LIKE $1;`, [email])
+  return db.query(`SELECT * FROM users WHERE email = $1;`, [email])
     .then((result) => {
       return (result.rows[0]);
     })
@@ -25,7 +25,7 @@ const getUserWithEmail = function (email) {
 };
 
 const getUserWithName = function (name) {
-  return db.query(`SELECT * FROM users WHERE name LIKE $1;`, [name])
+  return db.query(`SELECT * FROM users WHERE name = $1;`, [name])
     .then((result) => {
       return (result.rows[0]);
     })
