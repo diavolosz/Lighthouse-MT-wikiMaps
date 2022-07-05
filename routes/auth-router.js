@@ -5,7 +5,15 @@ const bcrypt = require("bcryptjs"); // Hashing library
 const user_helpers = require("../db/user_helpers");
 
 router.get("/", (req, res) => {
-  res.render("login", { error: false });
+
+  user_helpers.getUserWithID(req.session.user_id).then((user) => {
+    if (user) {
+      return res.redirect(`/user/${user.id}`);
+    }
+
+    return res.render("login", { error: false });
+
+  });
 });
 
 router.post("/", (req, res) => {

@@ -6,7 +6,14 @@ const user_helpers = require("../db/user_helpers"); // Database helper queries
 
 // Render register page
 router.get("/", (req, res) => {
-  res.render("register", { error: false });
+  user_helpers.getUserWithID(req.session.user_id).then((user) => {
+
+    if (user) {
+      return res.redirect(`/user/${user.id}`);
+    }
+
+    res.render("register", { error: false });
+  });
 });
 
 // Register user
