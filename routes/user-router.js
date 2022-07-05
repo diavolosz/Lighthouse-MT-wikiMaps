@@ -10,11 +10,19 @@ const mapQuery = require ('../db/map_helpers');
 module.exports = (db) => {
   router.get("/", (req, res) => {
 
+
     let favouriteMaps
     let contributedMaps
     let myMaps
     let test = "testing"
+    let userInfo = null;
     let user = 2
+
+    userQuery.getUserWithID(req.session.user_id).then((result) => {
+      if (result) {
+        userInfo = result;
+      }
+    });
 
       let p1 = favQuery.getFavouritesByUserID(user)
         .then((respond) => {
@@ -37,7 +45,8 @@ module.exports = (db) => {
           favouriteMaps: favouriteMaps,
           contributedMaps: contributedMaps,
           myMaps: myMaps,
-          test: test
+          test: test,
+          user: userInfo
         }
         res.render('user', templateVars);
       })
