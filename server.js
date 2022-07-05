@@ -60,7 +60,7 @@ const widgetsRoutes = require("./routes/widgets");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/user/:id", userRouter(db));
-app.use("/maps/new", mapRoutes);
+app.use("/maps", mapRoutes);
 app.use("/login", authRouter);
 app.use("/register", registerRouter);
 app.use("/map", mapIdRouter(db));
