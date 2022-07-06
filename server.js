@@ -68,7 +68,7 @@ app.use("/register", registerRouter);
 app.use("/map", mapIdRouter(db));
 app.use("/favourite", favouriteRouter);
 app.use("/pin/:id/edit", pinEditRouter);
-app.use("/pin/add", pinAddRouter);
+app.use("/pin/add", pinAddRouter(db));
 app.use("/logout", logoutRouter);
 
 

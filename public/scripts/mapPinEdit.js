@@ -10,9 +10,6 @@ $(document).ready(function() {
       attribution: '© OpenStreetMap'
   }).addTo(map);
 
-
-
-
   const pinIcon = L.icon({
     iconUrl: '/image/pinIcon.png',
     iconSize: [60, 60]
@@ -22,16 +19,6 @@ $(document).ready(function() {
     maxWidth: 250,
     className: "popUp"
   })
-
-
-
-
-  // temperory marker location object
-  let locations = {
-      lat:43.66787265466534,
-      long:-79.38885296889084
-    }
-
 
   //function to show popup
   const onMapClick = function(pin) {
@@ -46,15 +33,6 @@ $(document).ready(function() {
   map.on('click', onMapClick);
 
 
-  // helper function to generate pin display on map from database
-  const generatePinOnMap = function(location) {
-    let lat = location.lat
-    let long = location.long
-    marker = new L.marker([lat, long], {icon: pinIcon}).addTo(map);
-    marker.on('click', onMapClick);
-    return
-  }
-  generatePinOnMap(locations)
 
 
 
