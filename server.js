@@ -53,6 +53,7 @@ const logoutRouter = require("./routes/logout-router");
 const registerRouter = require("./routes/register-router");
 const mapIdRouter = require("./routes/mapId-router");
 const pinEditRouter = require("./routes/pinEdit-router");
+const favouriteRouter = require("./routes/favourite-router");
 
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
@@ -64,6 +65,7 @@ app.use("/maps", mapRoutes);
 app.use("/login", authRouter);
 app.use("/register", registerRouter);
 app.use("/map", mapIdRouter(db));
+app.use("/favourite", favouriteRouter);
 app.use("/pin/:id/edit", pinEditRouter);
 app.use("/logout", logoutRouter);
 
