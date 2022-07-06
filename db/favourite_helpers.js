@@ -29,8 +29,28 @@ const getFavouritesByUserID = function (user_id) {
     });
 };
 
+const getFavouriteByMapAndUser = function (user_id, map_id) {
+  return db.query(`SELECT favourites.id, favourites.user_id, favourites.map_id, maps.name
+                    FROM maps
+                    JOIN favourites ON maps.id = favourites.map_id
+                    WHERE favourites.user_id = $1 AND favourites.map_id = $2;`, [user_id, map_id])
+    .then((result) => {
+      return (result.rows[0]);
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
+};
 
-
+const deleteFavouriteById = function (id) {
+  return db.query(`DELETE FROM favourites WHERE id = $1;`, [id])
+    .then((result) => {
+      return (result.rows);
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
+};
 
 const getFavouritesByMapID = function (map_id) {
   return db.query(`SELECT maps.name FROM maps
@@ -59,5 +79,7 @@ const addFavourites = function (favourite) {          //variable taken as object
 module.exports = {
   getFavouritesByUserID,
   getFavouritesByMapID,
-  addFavourites
+  addFavourites,
+  getFavouriteByMapAndUser,
+  deleteFavouriteById
 };
