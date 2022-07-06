@@ -40,8 +40,8 @@
 
 
 //gets mapid from url
-const queryString = window.location.href
-let id = queryString[queryString.length - 1]
+const queryString = window.location.href;
+let id = queryString.substring(queryString.lastIndexOf("/") + 1, queryString.length);
 
 $.ajax({
   type: 'GET',
@@ -54,20 +54,25 @@ $.ajax({
 
     //map placement
 
-    let mapPlacement = `
-    <div>
-    <span id="mapName">
-      <button>
-        <i class="fa-solid fa-star"></i>
-      </button>
-      <p>
-        ${mapInfo.name}
-      </p>
-    </span>
-    <div id="map"></div>
-  </div>`
+    function mapMaker(mapInfo) {
 
-  $('article').append(mapPlacement)
+      let mapPlacement = `
+      <div>
+      <span id="mapName">
+        <button>
+          <i class="fa-solid fa-star"></i>
+        </button>
+        <p>
+          ${mapInfo.name}
+        </p>
+      </span>
+      <div id="map"></div>
+    </div>`
+
+      $('article').append(mapPlacement)
+    };
+
+    mapMaker(mapInfo);
 
     let initialMapCentre = [mapInfo.latitude, mapInfo.longitude]
     let map = L.map('map').setView(initialMapCentre, 16);
