@@ -1,27 +1,34 @@
 const express = require('express');
 const router = express.Router();
 const userQuery = require('../db/user_helpers');
+const favouritesQuery = require('../db/favourite_helpers');
 
-router.get("/:id", (req, res) => {
-    /**
-     * 1. check if logged in and extract user id
-     * 2. extract param
-     * 3. validate param
-     * 4. if user has already favorited, delete
-     * 5. if user has not favorited, insert
-     */
+router.post("/:id", (req, res) => {
 
-  let id = req.session.user_id;
+  let userId = req.session.user_id;
 
+  userQuery.getUserWithID(userId).then((result) => {
+  if (!result) {
+    return res.status(401).send('You are not authorized to perform this action.');
+  }
 
-  // userQuery.getUserWithID(id).then((result) => {
-  // if (!result) {
-  //   return res.send("You must login.");
-  // }
+  let mapId = req.params.id;
 
-  // let mapId = req.params.id;
-  // res.send(mapId);
-  // });
+  favouritesQuery.getFavouriteByMapAndUser(userId, mapId)
+  .then(result => {
+    if (!result) {
+      favouritesQuery.addFavourites({
+        user_id: userId,
+        map_id: mapId
+      });
+    } else {
+      favouritesQuery.deleteFavouriteById(result.id);
+    }
+  })
+  .then(() => {
+    return res.status(200).send('OK');
+  });
+});
 
 });
 
