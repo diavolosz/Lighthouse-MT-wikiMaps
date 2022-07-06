@@ -7,12 +7,19 @@ const mapQuery = require("../db/map_helpers");
 const helpers = require("../lib/helpers");
 
 router.get('/', (req, res) => {
-  mapQuery.loadMaps().then((maps) => {
-    if (maps.length) {
-      return res.render("maps", { maps });
-    }
 
-    return res.render("maps", { maps: [] });
+  let userInfo = null
+  userQuery.getUserWithID(req.session.user_id).then((result) => {
+    if (result) {
+      userInfo = result
+    }
+  })
+
+  mapQuery.loadMaps().then((maps) => {
+    if (maps.length || req.session.user_id) {
+      return res.render("maps", { maps , user: userInfo});
+    }
+    return res.render("maps", { maps: [], user: userInfo});
   });
 });
 

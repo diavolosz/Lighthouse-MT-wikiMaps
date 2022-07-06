@@ -33,71 +33,73 @@ body {
     margin-top: 2em;
 
     p {
-      margin-left: 1em;
-      margin-bottom: 1em;
+      margin-left: 1rem;
       font-size: 3.4em;
     }
   }
 
   article {
     display: flex;
-    justify-content: space-between;
-    width: 70%;
-    margin: auto;
-    margin-top: 5em;
+    justify-content: center;
+    width: 80%;
+    margin: 5em auto;
+
 
     #welcomePageMap img{
       border-radius: 24px;
       font-size: 2em;
-      width: 100%;
-      height: auto;
-      transform: scale(1.15);
+      width: 50rem;
+
+      min-width: 40rem;
+
       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
     }
 
 
     .welcomePin {
-      position: absolute;
+      position: relative;
       z-index: 1;
+      top: -1em;
       color: $color3;
       font-size: 2.7em;
+      max-width: inherit;
+      min-width: inherit;
+      max-height: 100%;
 
 
 
         #pin1 {
-          position: inherit;
-          z-index: inherit;
-          left: 125px;
-          bottom: 400px;
+          position: absolute;
+          left: 2em;
+          bottom: 2em;
           animation-duration: 9s;
         }
         #pin2 {
-          position: inherit;
-          z-index: inherit;
-          left: 340px;
-          bottom: 420px;
+          position: absolute;
+          left: 4em;
+          bottom: 7em;
           animation-duration: 4s;
 
         }
         #pin3 {
-          position: inherit;
-          z-index: inherit;
-          left: 220px;
-          bottom: 200px;
+          position: absolute;
+          left: 12em;
+          bottom: 3em;
           animation-duration: 7s;
         }
         #pin4 {
-          position: inherit;
-          z-index: inherit;
-          left: 600px;
-          bottom: 250px;
+          position: absolute;
+
+          left: 8em;
+          bottom: 9em;
           animation-duration: 8s;
         }
         #pin5 {
-          position: inherit;
-          z-index: inherit;
-          left: 100px;
-          bottom: 100px;
+          position: absolute;
+
+          left: 7em;
+          bottom: 1em;
           animation-duration: 3s;
         }
     }
@@ -107,22 +109,19 @@ body {
       display: flex;
       flex-direction: column;
       background-color: $color5;
-      margin-top: 2em;
-      height: 22em;
+      margin: auto 3rem;
       width: 20em;
       box-shadow: $color4 6px 8px;
       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       border-radius: 24px;
 
       form {
-        position: relative;
-        text-align: center;
-        top: 5em;
-        margin-bottom: 35px;
+        display: flex;
+        justify-content: center;
+        margin: 35px 10px;
 
         .welcomeButton {
-          width: 80%;
-          height: 50px;
+          min-width: 80%;
           font-size: 24px;
           border-radius: 14px;
           border: none;

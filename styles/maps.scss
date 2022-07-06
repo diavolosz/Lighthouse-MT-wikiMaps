@@ -1,8 +1,152 @@
-section {
-  .card {
-    width: 18rem;
+$color1: #F16664;
+$color2: #FFF6E6;
+$color3: #0C7F98;
+$color4: #26195c;
+$color5: rgb(243, 235, 229);
+$color6: #FC642D;
+$color7: #58bfd6;
+$color8: rgb(43, 23, 23);
+
+
+
+body {
+  background-color: $color2 !important;
+
+  header {
+    background-color: $color1;
+    margin: 0;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+
+    #logoName {
+      margin-left: 1em;
+      margin-bottom: 1em;
+      font-size: 2.2em;
+      font-weight: bold;
+      display: flex;
+      margin-left: 3em;
+      margin-top: 1em;
+      color: $color2;
+
+
+      #logo {
+        position: relative;
+        top: -8px;
+        font-size: 40px;
+      }
+
+      #name {
+        position: relative;
+        top: -4px;
+        margin-left: 20px;
+      }
+    }
+
+    #buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: end;
+      position: relative;
+      width: 70%;
+      margin-top: 3em;
+      margin-right: 6em;
+
+
+      form {
+        margin-left: 60px;
+
+        button {
+          background-color: $color2;
+          width: 180px;
+          border: $color2;
+          height: 35px;
+          border-radius: 12px;
+          transition : ease-in .2s;
+          font-size: 18px;
+          font-weight: bold;
+
+          &:hover {
+            background-color: #ffc7c6;
+            border: white solid 2px;
+          }
+        }
+      }
+    }
   }
-  .map-item {
-    width: 25vw;
+
+  section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: 2rem auto;
+
+    .map-item {
+      width: 24vw;
+      margin: 1em;
+
+      .card {
+        width: 22vw;
+        height: 32vh;
+        border-radius: 24px;
+        border: $color3 solid 5px;
+        background-color: #eafff9;
+
+        .card-body {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding-bottom: 3%;
+
+          #viewMap {
+            font-size: 22px;
+            padding: 0px 15px;
+            width: 40%;
+            margin: 0 auto;
+          }
+
+          #bottomContainer {
+            display: flex;
+            justify-content: space-between;
+            margin: 2em 1em 0 1em;
+
+            #icon {
+              display: flex;
+              justify-content: end;
+
+
+              #pin {
+                font-weight: bold;
+                color: #5e5e5e;
+
+                i {
+                  color: $color1;
+                }
+              }
+
+              #fav {
+                font-weight: bold;
+                color: #5e5e5e;
+                margin-left: 15px;
+
+                i {
+                  color: rgb(231, 231, 53);
+                }
+              }
+            }
+          }
+
+        }
+      }
+    }
   }
+
+
+
+
+
+
+
 }

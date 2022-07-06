@@ -144,9 +144,9 @@ $.ajax({
         <div id="collapse${pinId}" class="accordion-collapse collapse" aria-labelledby="heading${pinId}"
           data-bs-parent="#accordionExample">
           <div class="accordion-body">
-         <h6>${pinDescription}</h6>
+         <h6 id="accDescription">${pinDescription}</h6>
           <img src='${pinImage}'>
-          <h6>Address: ${pinAddress}</h6>
+          <h6 id="accAddress">Address: ${pinAddress}</h6>
           </div>
         </div>
       </div>
