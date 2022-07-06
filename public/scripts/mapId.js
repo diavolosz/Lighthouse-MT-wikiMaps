@@ -51,14 +51,15 @@ $.ajax({
 
     let mapInfo = response[0];
     let pinsInfo = response[1];
+    let favInfo = response[2] ? 'fa-solid' : 'fa-regular';
 
     //map placement
 
     let mapPlacement = `
     <div>
     <span id="mapName">
-      <button>
-        <i class="fa-solid fa-star"></i>
+      <button id='favouriteToggle'>
+        <i class="${favInfo} fa-star"></i>
       </button>
       <p>
         ${mapInfo.name}
@@ -168,7 +169,21 @@ $.ajax({
 
     };
 
+    $('#favouriteToggle').on('click', function(e) {
+      const toggleIcon = () => {
+        if ($(this).find('.fa-star').hasClass('fa-regular')) {
+          $(this).find('.fa-star').removeClass('fa-regular fa-star').addClass('fa-solid fa-star');
+        } else {
+          $(this).find('.fa-star').removeClass('fa-solid fa-star').addClass('fa-regular fa-star');
+        }
+      }
+
+      $.ajax({
+        type: 'POST',
+        url: `/favourite/${id}`,
+        success: toggleIcon
+      });
+    });
   }
 
 })
-
