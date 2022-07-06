@@ -193,7 +193,6 @@ body {
           margin-left: 10px;
           position: relative;
 
-          top: -10px;
           font-size: 23px;
         }
 
@@ -248,6 +247,7 @@ body {
 
   height: 73.5vh;
   overflow: auto;
+
 }
 
 img {
@@ -259,4 +259,28 @@ img {
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+.pinTitle {
+  display: flex;
+  justify-content: center;
+
+
+
+
+  h2 {
+    font-size: 30px;
+  }
+}
+
+.accordion-item {
+
+  .accordion-header {
+    border: 2px solid $color3;
+    border-radius: 5px;
+  }
+
+  .accordion-collapse {
+    border: 2px solid $color3;
+  }
 }

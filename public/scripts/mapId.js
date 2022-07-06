@@ -87,48 +87,18 @@ $.ajax({
       iconSize: [60, 60]
     })
 
-    let pinPopUp = L.popup();
+    //let pinPopUp = L.popup();
 
+    //pins of interest name in accordion top with add button?
+    let navName = `
+    <div class='pinTitle'>
+    <h2>Pins of Interest</h2>
+    </div>
+    `;
 
+    $('.accordion').prepend(navName);
 
-    // //function to show popup
-    // const onMapClick = function (pin) {
-    //   pinPopUp
-    //     .setLatLng(pin.latlng)
-    //     .setContent("You clicked the map at " + pin.latlng.toString())
-    //     .openOn(map);
-    // }
-
-
-    // let locations = {};
-
-    // for (let location of pinsInfo) {
-    //   locations[location.name] = {
-    //     lat: location.latitude,
-    //     long: location.longitude
-    //   }
-    // }
-
-    // console.log(locations)
-
-
-    // // helper function to generate pin display on map from database
-    // const generatePinOnMap = function (database) {
-    //   for (let eachPin in database) {
-    //     let lat = database[eachPin].lat
-    //     let long = database[eachPin].long
-    //     marker = new L.marker([lat, long], { icon: pinIcon }).addTo(map);
-    //     marker.on(('click'), () => {
-
-    //     });
-    //   }
-    //   return
-    // }
-
-    // generatePinOnMap(locations)
-
-
-
+    //pin nav on left
     for (let pin of pinsInfo) {
 
       let pinId = pin.id;
@@ -154,17 +124,14 @@ $.ajax({
           </div>
         </div>
       </div>
-      `
-      $('.accordion').append(pinItem)
+      `;
+
+      $('.accordion').append(pinItem);
 
       //making pins and placing
-
-
       let marker = L.marker([pin.latitude, pin.longitude], { icon: pinIcon }).addTo(map);
 
-
       marker.bindPopup(`${pin.name}<img src='${pinImage}'>`);
-
 
       marker.on('click', function (e) {
         map.setView(e.latlng, 18);

@@ -5,11 +5,6 @@ const pinQuery = require('../db/pin_helpers');
 const mapQuery = require('../db/map_helpers');
 const { render } = require('ejs');
 
-// router.get("/:id", (req, res) => {
-//   res.render("mapId");
-// });
-
-// module.exports = router;
 module.exports = (db) => {
   router.get("/:id", (req, res) => {
     let user = null;
@@ -43,27 +38,6 @@ module.exports = (db) => {
   });
 
   router.get("/get/:id", (req, res) => {
-    // let map;
-
-    // mapQuery.getMapById(req.params.id)
-    //   .then((mapNumber) => {
-    //     let map = mapNumber;
-
-    //     let mapInfo = {map};
-    //   });
-
-    // pinQuery.getPinsByMapID(req.params.id)
-    //   .then((pins) => {
-    //     let mapInfo = {
-    //       map,
-    //       pins
-    //     }
-
-
-
-    //     res.json(mapInfo);
-    //   })
-
     const map = mapQuery.getMapById(req.params.id)
     const pins = pinQuery.getPinsByMapID(req.params.id)
 
