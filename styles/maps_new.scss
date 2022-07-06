@@ -1,3 +1,14 @@
+$color1: #F16664;
+$color2: #FFF6E6;
+$color3: #0C7F98;
+$color4: #26195c;
+$color5: rgb(243, 235, 229);
+$color6: #FC642D;
+$color7: #58bfd6;
+$color8: rgb(43, 23, 23);
+
+
+
 body {
   height: 100vh;
   display: flex;
@@ -28,12 +39,14 @@ form {
 }
 
 form button[type=submit] {
-  background-color: #26195c;
+  background-color: $color3;
   color: white;
 }
 
 form button[type=submit]:hover {
   color: white;
+  background-color: $color7;
+
 }
 
 .fa-solid.fa-map-location-dot {
@@ -45,4 +58,20 @@ form button[type=submit]:hover {
   width: 60vw;
   border: #0C7F98 8px solid;
   border-radius: 1.5em;
+
+  &:hover {
+    cursor: pointer;
+  }
+  .leaflet-popup-content-wrapper {
+    background-color: $color3;
+    font-size: 12px;
+    font-weight: bold;
+    color: $color2;
+    border: $color2 solid 2px;
+  }
+  .leaflet-popup-tip {
+    background-color: $color2;
+  }
 }
+
+

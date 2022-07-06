@@ -14,7 +14,6 @@ module.exports = (db) => {
     let favouriteMaps
     let contributedMaps
     let myMaps
-    let test = "testing"
     let userInfo = null;
     let user = 2
 
@@ -26,18 +25,18 @@ module.exports = (db) => {
 
       let p1 = favQuery.getFavouritesByUserID(user)
         .then((respond) => {
+          console.log(respond)
           favouriteMaps = respond
-          console.log(favouriteMaps)
         })
       let p2 = pinQuery.getPinByUserID(user)
         .then((respond) => {
+          console.log(respond)
           contributedMaps = respond
-          console.log(contributedMaps)
         })
       let p3 = mapQuery.getMapsByUserId(user)
         .then((respond) => {
+          console.log(respond)
           myMaps = respond
-          console.log(myMaps)
         })
 
       Promise.all([p1, p2, p3]).then(() => {
@@ -45,11 +44,13 @@ module.exports = (db) => {
           favouriteMaps: favouriteMaps,
           contributedMaps: contributedMaps,
           myMaps: myMaps,
-          test: test,
           user: userInfo
         }
         res.render('user', templateVars);
       })
   });
+
+
+
   return router;
 };
