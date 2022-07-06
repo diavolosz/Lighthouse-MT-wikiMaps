@@ -64,7 +64,6 @@ const getMapById = function (map_id) {
 
 }
 
-
 module.exports = {
   getAllMaps,
   getMapByName,
