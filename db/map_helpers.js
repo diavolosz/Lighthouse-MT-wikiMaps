@@ -8,7 +8,27 @@ db.connect();
 const getAllMaps = function () {
   return db.query(`SELECT * FROM maps;`)
     .then((result) => {
-      return (result.rows[0]);
+      return (result.rows);
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
+};
+
+const loadMaps = function () {
+  return db.query(`SELECT maps.id, maps.name map_name, users.id creator_id, users.name creator, COUNT(pins) as pincount, t.favourite
+  FROM maps
+  LEFT JOIN users ON maps.user_id = users.id
+  LEFT JOIN pins ON pins.map_id = maps.id
+  LEFT JOIN (SELECT maps.id, COUNT(favourites) as favourite
+  FROM maps
+  LEFT JOIN favourites ON favourites.map_id = maps.id
+  GROUP BY maps.id, maps.name
+  ORDER BY maps.id DESC) t ON t.id = maps.id
+  GROUP BY maps.id, maps.name, users.id, users.name, t.favourite
+  ORDER BY maps.id DESC`)
+    .then((result) => {
+      return (result.rows);
     })
     .catch((error) => {
       console.log(error.message);
@@ -66,6 +86,7 @@ const getMapById = function (map_id) {
 
 module.exports = {
   getAllMaps,
+  loadMaps,
   getMapByName,
   addMap,
   getMapsByUserId,
