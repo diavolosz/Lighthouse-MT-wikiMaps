@@ -12,15 +12,16 @@ router.get("/:id", (req, res) => {
      */
 
   let id = req.session.user_id;
-  let mapId = req.params.id;
 
-  userQuery.getUserWithID(id).then((result) => {
-  if (!result) {
-    return res.send("You must login.");
-  }
-  console.log(mapId)
-  res.send(mapId);
-  });
+
+  // userQuery.getUserWithID(id).then((result) => {
+  // if (!result) {
+  //   return res.send("You must login.");
+  // }
+
+  // let mapId = req.params.id;
+  // res.send(mapId);
+  // });
 
 });
 
