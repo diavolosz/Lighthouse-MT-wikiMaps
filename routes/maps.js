@@ -58,5 +58,11 @@ router.post('/', (req, res) => {
 
 
 });
+// router.post('/', (req, res) => {
+//   console.log("hi")
+//   res.render("maps_new");
+// });
+
+
 
 module.exports = router;

@@ -15,7 +15,8 @@
 
   <!-- JS script -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/mapId.js" defer></script>
+  <!-- will first try multi page  on single ejs as route deals with render, using mpID.js may require ajax and the routing to send as object/json?-->
+  <!-- <script type="text/javascript" src="/scripts/mapId.js" defer></script> -->
 
 
   <!-- BOOTSTRAP JS -->
@@ -49,7 +50,7 @@
       <div class="accordion" id="accordionExample">
 
 
-<!-- loops through pins for map using indexes, will remove ids and touch up later -->
+        <!-- loops through pins for map using indexes, will remove ids and touch up later -->
 
         <% for (let pin in pins) { %>
 
@@ -96,3 +97,42 @@
 </body>
 
 </html>
+
+<script>
+
+  let initialMapCentre = [43.663937824894184, -79.39198578896757]
+  let map = L.map('map').setView(initialMapCentre, 16);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap'
+  }).addTo(map);
+
+  const pinIcon = L.icon({
+    iconUrl: '/image/pinIcon.png',
+    iconSize: [60, 60]
+  })
+
+  let pinPopUp = L.popup();
+
+  //function to show popup
+  const onMapClick = function (pin) {
+    pinPopUp
+      .setLatLng(pin.latlng)
+      .setContent("You clicked the map at " + pin.latlng.toString())
+      .openOn(map);
+  }
+
+
+  // helper function to generate pin display on map from database
+  const generatePinOnMap = function (database) {
+    for (let eachPin in database) {
+      let lat = database[eachPin].lat
+      let long = database[eachPin].long
+      marker = new L.marker([lat, long], { icon: pinIcon }).addTo(map);
+      marker.on('click', onMapClick);
+      // marker.on('click', flyTo(L.latLng(lat, long)));
+    }
+    return
+  }
+</script>
