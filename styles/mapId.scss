@@ -24,9 +24,10 @@ body {
       margin-left: 1em;
       margin-bottom: 1em;
       font-size: 2.2em;
+      font-weight: bold;
       display: flex;
       margin-left: 3em;
-      margin-top: 0.2em;
+      margin-top: 1em;
       color: $color2;
 
 
@@ -37,61 +38,42 @@ body {
       }
 
       #name {
+        position: relative;
+        top: -4px;
         margin-left: 20px;
       }
     }
 
     #buttons {
       display: flex;
-      justify-content: space-evenly;
+      flex-direction: row;
+      justify-content: end;
       position: relative;
-      top: 40px;
-      width: 55%;
-
-      .eachButton {
-        padding: 10px 50px;
-        width: 220px;
-        border: none;
-        border-radius: 12px;
-        background-color: $color2;
-        color: $color3;
-        font-size: 20px;
-        font-weight: bold;
-        transition: ease-in .2s;
+      width: 70%;
+      margin-top: 3em;
+      margin-right: 6em;
 
 
-        &:hover {
-          cursor: pointer;
-          box-shadow: 0px 0px 14px white
+      form {
+        margin-left: 60px;
+
+        button {
+          background-color: $color2;
+          width: 180px;
+          border: $color2;
+          height: 35px;
+          border-radius: 12px;
+          transition : ease-in .2s;
+          font-size: 18px;
+          font-weight: bold;
+
+          &:hover {
+            background-color: #ffc7c6;
+            border: white solid 2px;
+          }
         }
       }
-
-      #createMaps {
-        position: relative;
-        right: 15.5em;
-      }
-
-      #profile {
-        position: relative;
-        right: 2.5em;
-      }
-
-      #logout {
-        position: relative;
-        right: 2.5em;
-      }
-
-      #login {
-        position: relative;
-        left: 10em;
-      }
-
-      #register {
-        position: relative;
-        left: 2.5em;
-      }
     }
-
   }
 
 
