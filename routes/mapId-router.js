@@ -64,7 +64,7 @@ module.exports = (db) => {
     //     res.json(mapInfo);
     //   })
 
-    const map = (mapQuery.getMapById(req.params.id))
+    const map = mapQuery.getMapById(req.params.id)
     const pins = pinQuery.getPinsByMapID(req.params.id)
 
     Promise.all ([map, pins])

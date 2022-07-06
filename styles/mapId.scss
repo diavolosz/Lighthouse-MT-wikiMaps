@@ -177,6 +177,7 @@ body {
       #mapName {
         display: flex;
 
+
         position: relative;
         left: 8em;
         height: 5vh;
@@ -191,7 +192,8 @@ body {
         p {
           margin-left: 10px;
           position: relative;
-          top: -24px;
+
+          top: -10px;
           font-size: 23px;
         }
 
@@ -238,16 +240,19 @@ body {
 }
 
 
+.accordion {
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 27em;
+  max-width: 27em;
 
-
-.accordion-item {
-  min-width: 20em;
-  max-width: 20em;
+  height: 73.5vh;
+  overflow: auto;
 }
 
 img {
   max-width: 100%;
-  max-height: 20em;
+  max-height: 100%;
 }
 
 .accordion-body {
