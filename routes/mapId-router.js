@@ -3,6 +3,7 @@ const router = express.Router();
 const userQuery = require('../db/user_helpers');
 const pinQuery = require('../db/pin_helpers');
 const mapQuery = require('../db/map_helpers');
+const favQuery = require('../db/favourite_helpers');
 const { render } = require('ejs');
 
 // router.get("/:id", (req, res) => {
@@ -66,8 +67,9 @@ module.exports = (db) => {
 
     const map = mapQuery.getMapById(req.params.id)
     const pins = pinQuery.getPinsByMapID(req.params.id)
+    const fav = favQuery.getFavouriteByMapAndUser(req.session.user_id, req.params.id);
 
-    Promise.all ([map, pins])
+    Promise.all ([map, pins, fav])
     .then ((values) => {
       res.json (values)
     })
