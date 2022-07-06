@@ -7,11 +7,17 @@ const mapQuery = require("../db/map_helpers");
 const helpers = require("../lib/helpers");
 
 router.get('/', (req, res) => {
-  res.send("get maps");
+  mapQuery.loadMaps().then((maps) => {
+    if (maps.length) {
+      return res.render("maps", { maps });
+    }
+
+    return res.render("maps", { maps: [] });
+  });
 });
 
 router.get('/new', (req, res) => {
-  res.render("maps_new", { error: false });
+  return res.render("maps_new", { error: false });
 });
 
 router.post('/', (req, res) => {
