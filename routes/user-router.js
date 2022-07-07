@@ -21,15 +21,15 @@ module.exports = (db) => {
       if (result) {
         userInfo = result
 
-        let p1 = favQuery.getFavouritesByUserID(user)
+        let p1 = favQuery.getFavouritesByUserID(userInfo.id)
           .then((respond) => {
             favouriteMaps = respond
           })
-        let p2 = pinQuery.getPinByUserID(user)
+        let p2 = pinQuery.getPinByUserID(userInfo.id)
           .then((respond) => {
             contributedPins = respond
           })
-        let p3 = mapQuery.getMapsByUserId(user)
+        let p3 = mapQuery.getMapsByUserId(userInfo.id)
           .then((respond) => {
             myMaps = respond
           })
