@@ -67,7 +67,7 @@ $.ajax({
     $('.accordion').prepend(navName);
 
 
-let markerArray = [];
+    let markerArray = [];
 
 
     //pin nav on left
@@ -81,7 +81,7 @@ let markerArray = [];
       let pinLat = pin.latitude;
       let pinLong = pin.longitude;
 
-      markerArray.push ([pinLat, pinLong])
+      markerArray.push([pinLat, pinLong])
 
       let pinItem = `
 
@@ -157,16 +157,24 @@ let markerArray = [];
 
       marker.on('click', function (e) {
         map.flyTo(e.latlng, 17);
+
+
+
+        $(`.accordion-collapse`).slideUp();
+        $(`#collapse${pinId}`).slideToggle();
+
+
+
       });
 
 
     };
 
-    map.fitBounds (markerArray);
+    map.fitBounds(markerArray);
 
     //end of loop
 
-    $('#favouriteToggle').on('click', function(e) {
+    $('#favouriteToggle').on('click', function (e) {
       const toggleIcon = () => {
         if ($(this).find('.fa-star').hasClass('fa-regular')) {
           $(this).find('.fa-star').removeClass('fa-regular fa-star').addClass('fa-solid fa-star');
@@ -181,6 +189,8 @@ let markerArray = [];
         success: toggleIcon
       });
     });
+
+
 
 
   }
