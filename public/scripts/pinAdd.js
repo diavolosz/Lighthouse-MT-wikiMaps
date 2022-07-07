@@ -38,15 +38,10 @@ $.ajax ({
     .setContent(`Your Latitude is : ${pin.latlng.lat} Your Longtitude is : ${pin.latlng.lng}`)
     .openOn(map)
 
-    $('form input[name=lat]').val(pin.latlng.lat);
-    $('form input[name=long]').val(pin.latlng.lng);
+    $('form input[name=latitude]').val(pin.latlng.lat);
+    $('form input[name=longitude]').val(pin.latlng.lng);
   }
   map.on('click', onMapClick);
-
-
-
-
-
 
 
   }

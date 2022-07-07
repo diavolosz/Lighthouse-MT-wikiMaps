@@ -8,8 +8,8 @@ CREATE TABLE pins (
   description TEXT DEFAULT NULL,
   image VARCHAR (255) DEFAULT NULL,
   address VARCHAR (255) NOT NULL,
-  latitude REAL NOT NULL,
-  longitude REAL NOT NULL,
+  latitude REAL,
+  longitude REAL,
   map_id INTEGER REFERENCES maps(id) ON DELETE CASCADE,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );

@@ -6,7 +6,6 @@ $.ajax({
   type: 'GET',
   url: 'get/' + id,
   success: (response) => {
-    console.log(response)
 
     let mapInfo = response[0];
     let pinsInfo = response[1];

@@ -69,22 +69,23 @@
 
         <div>
           <label for="image">Image</label>
-          <input type="text" id="image" placeholder="img url" name="description" required>
+          <input type="text" id="image" placeholder="img url" name="image" required>
         </div>
 
         <div>
           <label class="text-muted mb-1" for="lat">Latitude</label>
-          <input type="number" required class="form-control mb-3 text-muted" name="lat" min="-90" max="90" value=""
+          <input type="number" required class="form-control mb-3 text-muted" name="latitude" min="-90" max="90" value=""
             step="any">
         </div>
 
         <div>
-          <label class="text-muted mb-1" for="long">Longitude</label>
-          <input type="number" required class="form-control text-muted" name="long" min="-180" max="180" value=""
+          <label class="text-muted mb-1" for="lng">Longitude</label>
+          <input type="number" required class="form-control text-muted" name="longitude" min="-180" max="180" value=""
             step="any">
         </div>
 
         <div>
+          <input type="number" name="map_id" value ='<%=mapRow.id%>' hidden>
           <button type="submit" class="form-control btn btn-success my-3">Update</button>
         </div>
 

@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const mapQuery = require('../db/map_helpers');
-
-
+const pinQuery = require('../db/pin_helpers');
+const userQuery = require('../db/user_helpers');
 
 module.exports = (db) => {
   router.post('/', (req, res) => {
@@ -40,25 +40,37 @@ module.exports = (db) => {
 
   router.post('/adding', (req, res) => {
 
-    console.log(req.body)
-    let mapNum = req.body.map_id;
+    let pinInfo = req.body
 
-    res.render("pinAdd");
+    // pinQuery.addPin(pinInfo)
+    //   .then(() => {
+    //     pinInfo['user_id'] = req.session.user_id;
 
-    // mapQuery.getMapById(mapNum)
-    //   .then((mapRow) => {
+    //     let templateVar = {
+    //       pinInfo,
+    //       user: null
+    //     }
 
-    //     let mapInfo = {
-    //       mapRow
-    //     };
-    //     res.render("pinAdd", mapInfo);
+    //     res.render("template_mapId", templateVar);
     //   })
 
-    // .catch(err => {
-    //   res
-    //     .status(500)
-    //     .json({ error: err.message });
-    // });
+
+
+      const pinAdd = pinQuery.addPin(pinInfo)
+      const user = userQuery.getUserWithID(req.session.user_id)
+
+      Promise.all ([pinAdd, user])
+      .then ((values) => {
+        console.log (values)
+        res.redirect (`../../map/${values[0].map_id}`)
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+
   })
+
   return router
 }
