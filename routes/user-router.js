@@ -12,42 +12,39 @@ module.exports = (db) => {
 
 
     let favouriteMaps
-    let contributedMaps
+    let contributedPins
     let myMaps
     let userInfo = null;
     let user = 2
 
     userQuery.getUserWithID(req.session.user_id).then((result) => {
       if (result) {
-        userInfo = result;
+        userInfo = result
+
+        let p1 = favQuery.getFavouritesByUserID(userInfo.id)
+          .then((respond) => {
+            favouriteMaps = respond
+          })
+        let p2 = pinQuery.getPinByUserID(userInfo.id)
+          .then((respond) => {
+            contributedPins = respond
+          })
+        let p3 = mapQuery.getMapsByUserId(userInfo.id)
+          .then((respond) => {
+            myMaps = respond
+          })
+
+        Promise.all([p1, p2, p3]).then(() => {
+          let templateVars = {
+            favouriteMaps: favouriteMaps,
+            contributedPins: contributedPins,
+            myMaps: myMaps,
+            user: userInfo
+          }
+          res.render('user', templateVars);
+        })
       }
     });
-
-      let p1 = favQuery.getFavouritesByUserID(user)
-        .then((respond) => {
-          console.log(respond)
-          favouriteMaps = respond
-        })
-      let p2 = pinQuery.getPinByUserID(user)
-        .then((respond) => {
-          console.log(respond)
-          contributedMaps = respond
-        })
-      let p3 = mapQuery.getMapsByUserId(user)
-        .then((respond) => {
-          console.log(respond)
-          myMaps = respond
-        })
-
-      Promise.all([p1, p2, p3]).then(() => {
-        let templateVars = {
-          favouriteMaps: favouriteMaps,
-          contributedMaps: contributedMaps,
-          myMaps: myMaps,
-          user: userInfo
-        }
-        res.render('user', templateVars);
-      })
   });
 
 

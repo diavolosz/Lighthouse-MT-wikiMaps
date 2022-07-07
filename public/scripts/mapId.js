@@ -11,6 +11,7 @@ $.ajax({
 
     let mapInfo = response[0];
     let pinsInfo = response[1];
+    let favInfo = response[2] ? 'fa-solid' : 'fa-regular';
 
     //map placement
 
@@ -19,8 +20,8 @@ $.ajax({
       let mapPlacement = `
       <div>
       <span id="mapName">
-        <button>
-          <i class="fa-solid fa-star"></i>
+        <button id='favouriteToggle'>
+          <i class="${favInfo} fa-star"></i>
         </button>
         <p>
           ${mapInfo.name}
@@ -88,9 +89,9 @@ $.ajax({
         <div id="collapse${pinId}" class="accordion-collapse collapse" aria-labelledby="heading${pinId}"
           data-bs-parent="#accordionExample">
           <div class="accordion-body">
-         <h6>${pinDescription}</h6>
+         <h6 id="accDescription">${pinDescription}</h6>
           <img src='${pinImage}'>
-          <h6>Address: ${pinAddress}</h6>
+          <h6 id="accAddress">Address: ${pinAddress}</h6>
 
           <!-- Delete button triggering modal popup -->
           <button type="button" class="btn btn-danger pin_delete_btn" name='${pinName}' data-bs-toggle="modal" data-bs-target="#pinModal${pinId}">
@@ -146,7 +147,22 @@ $.ajax({
 
     };
 
+    $('#favouriteToggle').on('click', function(e) {
+      const toggleIcon = () => {
+        if ($(this).find('.fa-star').hasClass('fa-regular')) {
+          $(this).find('.fa-star').removeClass('fa-regular fa-star').addClass('fa-solid fa-star');
+        } else {
+          $(this).find('.fa-star').removeClass('fa-solid fa-star').addClass('fa-regular fa-star');
+        }
+      }
+
+      $.ajax({
+        type: 'POST',
+        url: `/favourite/${id}`,
+        success: toggleIcon
+      });
+    });
+
 
   }
 })
-

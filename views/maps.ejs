@@ -25,23 +25,32 @@
 
 </head>
 
+
+
+
 <body>
-  <section class="d-flex justify-content-start align-items flex-wrap">
+  <%- include('partials/_header') %>
+
+  <section >
     <% for (let map of maps) { %>
       <div class="map-item text-center d-flex justify-content-center align-items my-3">
-        <div class="card border-4" style="width: 18rem;">
+        <div class="card border-4">
           <div class="card-body">
             <h5 class="card-title"><%= map.map_name %></h5>
-            <a href="/user/<%= map.creator_id %>"><h6 class="card-subtitle mb-2 text-muted">@<%= map.creator %></h6></a>
-            <a href="/map/<%= map.id %>" class="btn btn-primary mt-5">View</a>
-            <div class="d-flex flex-column align-items-end justify-content-end">
-              <div>
-                <i class="fa-solid fa-map-pin h5 me-1"></i>
-                <span><%= map.pincount %></span>
-              </div>
-              <div>
-                <i class="fa-solid fa-star h6"></i>
-                <span><%= map.favourite %></span>
+            <a id="viewMap" href="/map/<%= map.id %>" class="btn btn-primary mt-5">
+              <i class="fa-solid fa-magnifying-glass-location"></i>
+            </a>
+            <div id="bottomContainer" >
+              <a href="/user/<%= map.creator_id %>"><h6 class="text-muted">@<%= map.creator %></h6></a>
+              <div id="icon">
+                <div id="pin">
+                  <i class="fa-solid fa-map-pin h5 me-1"></i>
+                  <span><%= map.pincount %></span>
+                </div>
+                <div id="fav">
+                  <i class="fa-solid fa-star h6"></i>
+                  <span><%= map.favourite %></span>
+                </div>
               </div>
             </div>
           </div>
