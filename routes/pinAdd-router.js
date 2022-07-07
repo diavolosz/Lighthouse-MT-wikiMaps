@@ -6,7 +6,14 @@ const userQuery = require('../db/user_helpers');
 
 module.exports = (db) => {
   router.post('/', (req, res) => {
+
     let mapNum = req.body.map_id;
+
+    userQuery.getUserWithID(req.session.user_id).then((isLoggedIn) => {
+      if(!isLoggedIn) {
+        return res.redirect(`../../login`);
+      }
+    });
 
     mapQuery.getMapById(mapNum)
       .then((mapRow) => {
@@ -41,15 +48,18 @@ module.exports = (db) => {
   router.post('/adding', (req, res) => {
 
     let pinInfo = req.body
-    const user = userQuery.getUserWithID(req.session.user_id)
-
     pinInfo['user_id'] = req.session.user_id;
 
-    const pinAdd = pinQuery.addPin(pinInfo)
 
-    Promise.all([pinAdd, user])
+
+    userQuery.getUserWithID(req.session.user_id).then((isLoggedIn) => {
+      if(!isLoggedIn) {
+        return res.send("You must be logged in to perform that action.");
+      } else {
+        const user = userQuery.getUserWithID(req.session.user_id)
+        const pinAdd = pinQuery.addPin(pinInfo);
+        Promise.all([pinAdd, user])
       .then((values) => {
-
         res.redirect(`../../map/${values[0].map_id}`)
       })
       .catch(err => {
@@ -57,8 +67,13 @@ module.exports = (db) => {
           .status(500)
           .json({ error: err.message });
       });
+      }
 
-  })
+
+    });
+
+
+  });
 
   return router
 }

@@ -28,14 +28,37 @@ body {
   header {
     color: $color2;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     margin-top: 2em;
 
-    p {
-      margin-left: 1rem;
-      font-size: 3.4em;
-    }
+      #logo {
+        display: flex;
+        flex-direction: row;
+        font-size: 2em;
+
+            p {
+              font-size: 3.6em;
+              margin: 1rem;
+              font-weight: bold;
+            }
+            #title {
+              margin-left: 3rem;
+              margin-right: 3rem;
+              font-family: 'Dancing Script', cursive;
+            }
+      }
+
+      #slogan {
+        p {
+          margin: 0;
+          font-size: 2.6em;
+          font-family: 'Dancing Script', cursive;
+
+        }
+      }
+
   }
 
   article {

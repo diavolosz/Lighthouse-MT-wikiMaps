@@ -10,17 +10,27 @@ module.exports = (db) => {
     let pinId = req.body.pin_id;
     let mapId = req.body.map_id
 
-    pinQuery.removePinById(pinId)
-      .then((value) => {
+    userQuery.getUserWithID(req.session.user_id).then((isLoggedIn) => {
+      if(!isLoggedIn) {
+        return res.redirect(`../../login`);
+      } else {
+        pinQuery.getPinByID(pinId).then(pinToEdit => {
+          if (pinToEdit.user_id === req.session.user_id) {
+            pinQuery.removePinById(pinId)
+            .then((value) => {
 
-        res.redirect (`../../map/${mapId}`)
-      })
+            res.redirect (`../../map/${mapId}`)
+            })
+            .catch(err => {
+              res.status(500).json({ error: err.message });
+            });
+          } else {
+            return res.redirect(`../../map/${mapId}`);
+          }
+        });
+      }
+    });
 
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
   })
 
   return router
