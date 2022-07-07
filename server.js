@@ -52,10 +52,10 @@ const authRouter = require("./routes/auth-router");
 const logoutRouter = require("./routes/logout-router");
 const registerRouter = require("./routes/register-router");
 const mapIdRouter = require("./routes/mapId-router");
-const pinEditRouter = require("./routes/pinEdit-router");
 const pinAddRouter = require("./routes/pinAdd-router");
 
 const pinDeleteRouter = require("./routes/pinDelete-router");
+const pinEditRouter = require("./routes/pinEdit-router");
 
 const favouriteRouter = require("./routes/favourite-router");
 
@@ -70,10 +70,11 @@ app.use("/login", authRouter);
 app.use("/register", registerRouter);
 app.use("/map", mapIdRouter(db));
 app.use("/favourite", favouriteRouter);
-app.use("/pin/:id/edit", pinEditRouter);
 app.use("/pin/add", pinAddRouter(db));
 
 app.use ("/pin/delete", pinDeleteRouter(db));
+app.use("/pin/:id/edit", pinEditRouter(db));
+
 
 app.use("/logout", logoutRouter);
 

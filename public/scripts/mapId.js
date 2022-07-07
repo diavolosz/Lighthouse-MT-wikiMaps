@@ -61,8 +61,8 @@ $.ajax({
         <input type="number" name="map_id" value="${id}" hidden>
         <button class='btn btn-block btn-primary'>
         Add new pin
+        </button>
       </form>
-      </button>
     </div>
     `;
 
@@ -92,6 +92,14 @@ $.ajax({
          <h6 id="accDescription">${pinDescription}</h6>
           <img src='${pinImage}'>
           <h6 id="accAddress">Address: ${pinAddress}</h6>
+
+          <!-- Edit pin button -->
+          <form action="/pin/${pinId}/edit/" method="POST">
+            <input type="number" name="pin_id" value="${pinId}" hidden>
+            <button class='btn btn-block btn-primary'>
+              Edit ${pinName}
+            </button>
+          </form>
 
           <!-- Delete button triggering modal popup -->
           <button type="button" class="btn btn-danger pin_delete_btn" name='${pinName}' data-bs-toggle="modal" data-bs-target="#pinModal${pinId}">
@@ -141,7 +149,7 @@ $.ajax({
       marker.bindPopup(`${pin.name}<img src='${pinImage}'>`);
 
       marker.on('click', function (e) {
-        map.setView(e.latlng, 18);
+        map.flyTo(e.latlng, 17);
       });
 
 
