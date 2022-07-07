@@ -13,6 +13,7 @@ body {
   min-height: 100vh;
   background-color: $color2;
 
+
   header {
     background-color: $color1;
     margin: 0;
@@ -275,6 +276,8 @@ img {
 
 .accordion-item {
 
+
+
   .accordion-header {
     border: 2px solid $color3;
     border-radius: 5px;
@@ -284,3 +287,5 @@ img {
     border: 2px solid $color3;
   }
 }
+
+

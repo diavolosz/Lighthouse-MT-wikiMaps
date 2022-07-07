@@ -86,6 +86,9 @@ $.ajax({
       let pinAddress = pin.address;
 
       let pinItem = `
+
+
+
       <div class="accordion-item">
         <h2 class="accordion-header" id="heading${pinId}">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -99,12 +102,44 @@ $.ajax({
          <h6>${pinDescription}</h6>
           <img src='${pinImage}'>
           <h6>Address: ${pinAddress}</h6>
+
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-danger pin_delete_btn" name='${pinName}' data-bs-toggle="modal" data-bs-target="#pinModal${pinId}">
+            Delete ${pinName}
+          </button>
+
+
           </div>
         </div>
       </div>
+
+
+
+
+      <!-- Modal placed outside of the accordion item-->
+      <div class="modal fade in" id="pinModal${pinId}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Confirm Deletion</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Are you sure you want to delete ${pinName}?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-danger">Delete</button>
+            </div>
+          </div>
+        </div>
+</div>
+
+
       `;
 
       $('.accordion').append(pinItem);
+
 
       //making pins and placing
       let marker = L.marker([pin.latitude, pin.longitude], { icon: pinIcon }).addTo(map);
@@ -118,7 +153,11 @@ $.ajax({
 
     };
 
+    // $('.pin_delete_btn').on('click', () => {
+    //   //let found = $('.pin_delete_btn').closest ($('.accordion-button').text())
+    //   console.log ($(this).closest($('.pin_delete_btn')))
 
+    // })
 
   }
 })
