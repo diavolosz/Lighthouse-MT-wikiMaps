@@ -47,9 +47,26 @@ module.exports = (db) => {
       });
   });
 
-  router.get('/get/:map_name', (req, res) => {
+  // router.get('/get/:map_name', (req, res) => {
 
-    mapQuery.getMapByPinName(req.params.map_name)
+  //   mapQuery.getMapByPinName(req.params.map_name)
+  //     .then((mapRow) => {
+
+  //       res.json(mapRow);
+  //     })
+
+  //     .catch(err => {
+  //       res
+  //         .status(500)
+  //         .json({ error: err.message });
+  //     });
+
+
+  // })
+
+  router.get('/get/:pin_name', (req, res) => {
+
+    pinQuery.getPinByName(req.params.pin_name)
       .then((mapRow) => {
 
         res.json(mapRow);

@@ -1,16 +1,16 @@
 let beforeMapName = $('#title').text();
 let subString = beforeMapName.substring(0, beforeMapName.indexOf('I'));
-let mapName = (subString.substring(6)).trim();
+let pinName = (subString.substring(6)).trim();
 
 
 
 $.ajax({
   type: 'GET',
-  url: 'get/' + mapName,
-  success: (mapInfo) => {
+  url: 'get/' + pinName,
+  success: (pinInfo) => {
 
-    let initialMapCentre = [mapInfo.latitude, mapInfo.longitude]
-    let map = L.map('map').setView(initialMapCentre, 16);
+    let initialMapCentre = [pinInfo.latitude, pinInfo.longitude]
+    let map = L.map('map').setView(initialMapCentre, 17);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
@@ -39,11 +39,20 @@ $.ajax({
     }
     map.on('click', onMapClick);
 
+    //generate pin marker
+    let marker = L.marker([pinInfo.latitude, pinInfo.longitude], { icon: pinIcon, draggable: true }).addTo(map);
+    marker.bindPopup(`${pinInfo.name}<img src='${pinInfo.image}'>`).openPopup();
+    marker.on('click', function (e) {
+      map.flyTo(e.latlng, 17);
+    });
 
+    //draggable marker to update coords
+    marker.on('drag', function (event) {
+      let position = marker.getLatLng();
 
-
-
-
+      $('form input[name=latitude]').val(position.lat);
+      $('form input[name=longitude]').val(position.lng);
+    })
 
   }
 
