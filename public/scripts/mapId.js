@@ -87,8 +87,6 @@ $.ajax({
 
       let pinItem = `
 
-
-
       <div class="accordion-item">
         <h2 class="accordion-header" id="heading${pinId}">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -103,7 +101,7 @@ $.ajax({
           <img src='${pinImage}'>
           <h6>Address: ${pinAddress}</h6>
 
-          <!-- Button trigger modal -->
+          <!-- Delete button triggering modal popup -->
           <button type="button" class="btn btn-danger pin_delete_btn" name='${pinName}' data-bs-toggle="modal" data-bs-target="#pinModal${pinId}">
             Delete ${pinName}
           </button>
@@ -112,8 +110,6 @@ $.ajax({
           </div>
         </div>
       </div>
-
-
 
 
       <!-- Modal placed outside of the accordion item-->
@@ -129,11 +125,17 @@ $.ajax({
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-danger">Delete</button>
+
+
+            <form action="/pin/delete/:id" method="POST">
+                <input type="number" name="pin_id" value="${pinId}" hidden>
+                <input type="number" name="map_id" value="${mapInfo.id}" hidden>
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
             </div>
           </div>
         </div>
-</div>
+      </div>
 
 
       `;
@@ -153,11 +155,6 @@ $.ajax({
 
     };
 
-    // $('.pin_delete_btn').on('click', () => {
-    //   //let found = $('.pin_delete_btn').closest ($('.accordion-button').text())
-    //   console.log ($(this).closest($('.pin_delete_btn')))
-
-    // })
 
   }
 })

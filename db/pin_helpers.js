@@ -77,6 +77,17 @@ const addPin = function (pin) {                          //variable taken as obj
     });
 };
 
+const removePinById = function (pin) {                //input is the id number
+  return db.query(`DELETE FROM pins WHERE id = $1 RETURNING *;`, [pin])
+    .then((result) => {
+      return (result.rows[0]);
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
+
+};
+
 module.exports = {
   getAllPins,
   getPinByID,
@@ -84,5 +95,6 @@ module.exports = {
   getPinByMapID,
   getPinByUserID,
   getPinsByMapID,
-  addPin
+  addPin,
+  removePinById
 };
