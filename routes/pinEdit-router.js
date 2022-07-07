@@ -11,7 +11,7 @@ module.exports = (db) => {
 
     pinQuery.getPinByID(pinId)
       .then((pinInfo) => {
-
+        console.log(pinInfo)
         templateVar = {
           pinInfo,
           mapId

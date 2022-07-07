@@ -103,6 +103,7 @@ body {
       }
       #bannerName {
         margin-top: 14px;
+        font-weight: bold;
       }
     }
   }
@@ -112,6 +113,8 @@ body {
     .listContainer {
       h3 {
         font-size: 25px;
+        font-weight: bold;
+
       }
 
 
@@ -120,6 +123,8 @@ body {
         border-radius: 12px;
 
         ul {
+          padding-top: 8px;
+
           &::-webkit-scrollbar {
             width: 10px;
           }
@@ -143,6 +148,13 @@ body {
             a {
               color: #0C7F98;
               font-weight: bold;
+              text-decoration: none;
+
+              &:hover {
+                color: #145361;
+                position: relative;
+                top: -2px;
+              }
             }
           }
         }

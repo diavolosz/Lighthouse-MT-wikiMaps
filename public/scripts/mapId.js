@@ -95,13 +95,13 @@ $.ajax({
           <form action="/pin/${pinId}/edit/" method="POST">
             <input type="number" name="pin_id" value="${pinId}" hidden>
             <input type="number" name="map_id" value="${mapInfo.id}" hidden>
-            <button class='btn btn-block btn-primary'>
+            <button id='editButton' class='btn btn-block btn-primary'>
               Edit ${pinName}
             </button>
           </form>
 
           <!-- Delete button triggering modal popup -->
-          <button type="button" class="btn btn-danger pin_delete_btn" name='${pinName}' data-bs-toggle="modal" data-bs-target="#pinModal${pinId}">
+          <button id='deleteButton' type="button" class="btn btn-danger pin_delete_btn" name='${pinName}' data-bs-toggle="modal" data-bs-target="#pinModal${pinId}">
             Delete ${pinName}
           </button>
 
