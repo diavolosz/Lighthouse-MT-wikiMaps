@@ -7,6 +7,8 @@ $.ajax({
   url: 'get/' + id,
   success: (response) => {
 
+    console.log (response)
+
     let mapInfo = response[0];
     let pinsInfo = response[1];
 
@@ -64,17 +66,6 @@ $.ajax({
     `;
 
     $('.accordion').prepend(navName);
-
-    // $('.fa-plus').click(function () {
-    //   $.ajax({
-    //     type: 'GET',
-    //     url: '/pin/add',
-    //     success: ((response) => {
-    //       location.replace (response)
-    //     })
-
-    //   })
-    // });
 
     //pin nav on left
     for (let pin of pinsInfo) {

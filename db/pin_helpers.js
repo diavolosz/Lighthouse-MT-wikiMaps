@@ -65,10 +65,10 @@ const getPinByUserID = function (user_id) {
 };
 
 const addPin = function (pin) {                          //variable taken as object
-  return db.query(`INSERT INTO pins (name, description, image, address, map_id, user_id)
+  return db.query(`INSERT INTO pins (name, description, image, address, latitude, longitude, map_id, user_id)
   VALUES
-  ($1, $2, $3, $4, $5, $6) RETURNING *;`,
-    [pin.name, pin.description, pin.image, pin.address, pin.map_id, pin.user_id])
+  ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *;`,
+    [pin.name, pin.description, pin.image, pin.address, pin.latitude, pin.longitude, pin.map_id, pin.user_id])
     .then((result) => {
       return (result.rows[0]);
     })

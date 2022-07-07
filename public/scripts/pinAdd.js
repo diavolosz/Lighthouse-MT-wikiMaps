@@ -1,15 +1,11 @@
 let beforeMapName = $('#title').text()
-
 let subString = beforeMapName.substring(0, beforeMapName.indexOf(':'));
-
 let mapName = subString.substring(11)
 
 $.ajax ({
   type: 'GET',
   url: 'add/get/' + mapName,
   success: (mapInfo) => {
-    console.log (mapInfo)
-
 
     //making map and proper coords for map
     let initialMapCentre = [mapInfo.latitude, mapInfo.longitude]

@@ -42,27 +42,15 @@ module.exports = (db) => {
 
     let pinInfo = req.body
 
-    // pinQuery.addPin(pinInfo)
-    //   .then(() => {
-    //     pinInfo['user_id'] = req.session.user_id;
 
-    //     let templateVar = {
-    //       pinInfo,
-    //       user: null
-    //     }
+    const pinAdd = pinQuery.addPin(pinInfo)
+    const user = userQuery.getUserWithID(req.session.user_id)
 
-    //     res.render("template_mapId", templateVar);
-    //   })
+    Promise.all([pinAdd, user])
+      .then((values) => {
 
-
-
-      const pinAdd = pinQuery.addPin(pinInfo)
-      const user = userQuery.getUserWithID(req.session.user_id)
-
-      Promise.all ([pinAdd, user])
-      .then ((values) => {
         console.log (values)
-        res.redirect (`../../map/${values[0].map_id}`)
+        res.redirect(`../../map/${values[0].map_id}`)
       })
       .catch(err => {
         res

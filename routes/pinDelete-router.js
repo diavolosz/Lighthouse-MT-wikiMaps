@@ -10,10 +10,6 @@ module.exports = (db) => {
     let pinId = req.body.pin_id;
     let mapId = req.body.map_id
 
-    console.log(req.body.pin_id)
-    console.log(req.body.map_id)
-
-
     pinQuery.removePinById(pinId)
       .then((value) => {
 
