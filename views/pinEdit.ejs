@@ -45,7 +45,7 @@
       </header>
 
 
-      <form method="POST" action="">
+      <form method="POST" action="/pin/${pinId}/edit/editing">
 
         <div>
           <label for="mapName">Name</label>
@@ -69,12 +69,12 @@
 
         <div>
           <label class="text-muted mb-1" for="lat">Latitude</label>
-          <input type="number" required  class="form-control mb-3 text-muted" name="lat" min="-90" max="90" value="" step="any">
+          <input type="number" required  class="form-control mb-3 text-muted" name="latitude" min="-90" max="90" value="" step="any">
         </div>
 
         <div>
           <label class="text-muted mb-1" for="long">Longitude</label>
-          <input type="number" required class="form-control text-muted" name="long" min="-180" max="180" value="" step="any">
+          <input type="number" required class="form-control text-muted" name="longitude" min="-180" max="180" value="" step="any">
         </div>
 
         <div>

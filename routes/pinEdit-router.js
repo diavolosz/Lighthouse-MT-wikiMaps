@@ -30,6 +30,30 @@ module.exports = (db) => {
   });
 
 
+  router.post ('/editing', (req, res) => {
+    // console.log (req.body)
+
+
+    // res.render ('welcome')
+
+    let pinInfo = req.body
+
+
+    const pinAdd = pinQuery.addPin(pinInfo)
+    const user = userQuery.getUserWithID(req.session.user_id)
+
+    Promise.all([pinAdd, user])
+      .then((values) => {
+
+        console.log (values)
+        res.redirect(`../../map/${values[0].map_id}`)
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
 
 
   // router.post('/adding', (req, res) => {
