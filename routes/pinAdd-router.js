@@ -41,10 +41,11 @@ module.exports = (db) => {
   router.post('/adding', (req, res) => {
 
     let pinInfo = req.body
+    const user = userQuery.getUserWithID(req.session.user_id)
 
+    pinInfo['user_id'] = req.session.user_id;
 
     const pinAdd = pinQuery.addPin(pinInfo)
-    const user = userQuery.getUserWithID(req.session.user_id)
 
     Promise.all([pinAdd, user])
       .then((values) => {
