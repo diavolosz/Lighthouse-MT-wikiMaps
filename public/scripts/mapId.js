@@ -66,6 +66,10 @@ $.ajax({
 
     $('.accordion').prepend(navName);
 
+
+let markerArray = [];
+
+
     //pin nav on left
     for (let pin of pinsInfo) {
 
@@ -74,6 +78,10 @@ $.ajax({
       let pinDescription = pin.description;
       let pinImage = pin.image;
       let pinAddress = pin.address;
+      let pinLat = pin.latitude;
+      let pinLong = pin.longitude;
+
+      markerArray.push ([pinLat, pinLong])
 
       let pinItem = `
 
@@ -153,6 +161,10 @@ $.ajax({
 
 
     };
+
+    map.fitBounds (markerArray);
+
+    //end of loop
 
     $('#favouriteToggle').on('click', function(e) {
       const toggleIcon = () => {
