@@ -85,7 +85,7 @@ $.ajax({
 
       let pinItem = `
 
-      <div class="accordion-item">
+      <div class="accordion-item accordionNum${pinId}">
         <h2 class="accordion-header" id="heading${pinId}">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#collapse${pinId}" aria-expanded="false" aria-controls="collapse${pinId}">
@@ -159,13 +159,32 @@ $.ajax({
         map.flyTo(e.latlng, 17);
 
 
+        // if ($(`#collapse${pinId}`).classList.contains('collapsed')) {
+        //   $(`#collapse${pinId}`).removeClass('collapsed')
+        // } else {
+        //   $(`#collapse${pinId}`).addClass('collapsed')
+        // }
 
-        $(`.accordion-collapse`).slideUp();
-        $(`#collapse${pinId}`).slideToggle();
 
+
+
+
+        // $('.accordion-content').slideUp();
+        // $(`#collapse${pinId}`).slideToggle();
+
+
+        // $('.accordion-content').slideUp();
+
+        // $(`#collapse${pinId}`).collapse();
+        // $(`#collapse${pinId}`).collapse();
 
 
       });
+
+      // $('.accordBtn${pinId}').on('click', () => {
+
+
+      // })
 
 
     };
