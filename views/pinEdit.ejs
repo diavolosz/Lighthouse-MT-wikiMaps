@@ -64,7 +64,7 @@
 
         <div>
           <label for="image">Image</label>
-          <input type="text" id="image" placeholder="img url" name="description" required>
+          <input type="text" id="image" placeholder="img url" name="image" required>
         </div>
 
         <div>
@@ -78,6 +78,8 @@
         </div>
 
         <div>
+          <input type="number" name="map_id" value="<%=mapId%>" hidden>
+          <input type="number" name="pin_id" value="<%=pinInfo.id%>" hidden>
           <button type="submit" class="form-control btn btn-success my-3">Update</button>
         </div>
 

@@ -7,8 +7,6 @@ $.ajax({
   url: 'get/' + id,
   success: (response) => {
 
-    console.log (response)
-
     let mapInfo = response[0];
     let pinsInfo = response[1];
     let favInfo = response[2] ? 'fa-solid' : 'fa-regular';
@@ -96,6 +94,7 @@ $.ajax({
           <!-- Edit pin button -->
           <form action="/pin/${pinId}/edit/" method="POST">
             <input type="number" name="pin_id" value="${pinId}" hidden>
+            <input type="number" name="map_id" value="${mapInfo.id}" hidden>
             <button class='btn btn-block btn-primary'>
               Edit ${pinName}
             </button>

@@ -38,6 +38,7 @@ const loadMaps = function () {
 const getMapByName = function (name) {
   return db.query(`SELECT * FROM maps WHERE name LIKE $1;`, [name])
     .then((result) => {
+      // console.log (result.rows[0])
       return (result.rows[0]);
     })
     .catch((error) => {
@@ -84,11 +85,26 @@ const getMapById = function (map_id) {
 
 }
 
+const getMapByPinName = function (pin_name) {
+  return db.query(`SELECT *
+                    FROM maps
+                    JOIN pins ON pins.map_id = maps.id
+                    WHERE pins.name = $1`, [pin_name])
+    .then((result) => {
+      return (result.rows[0]);
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
+
+}
+
 module.exports = {
   getAllMaps,
   loadMaps,
   getMapByName,
   addMap,
   getMapsByUserId,
-  getMapById
+  getMapById,
+  getMapByPinName
 };

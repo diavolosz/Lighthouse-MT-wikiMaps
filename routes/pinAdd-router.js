@@ -50,7 +50,6 @@ module.exports = (db) => {
     Promise.all([pinAdd, user])
       .then((values) => {
 
-        console.log (values)
         res.redirect(`../../map/${values[0].map_id}`)
       })
       .catch(err => {

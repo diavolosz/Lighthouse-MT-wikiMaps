@@ -5,7 +5,7 @@ const db = new Pool(dbParams);
 db.connect();
 
 const getAllPins = function () {
-  return db.query(`SELECT * FROM pins;`)
+  return db.query(`SELECT * FROM pins ORDER BY id;`)
     .then((result) => {
       return (result.rows);
     })
@@ -45,7 +45,7 @@ const getPinByMapID = function (map_id) {
 };
 
 const getPinsByMapID = function (map_id, user_id) {
-  return db.query(`SELECT * FROM pins WHERE map_id = $1;`, [map_id])
+  return db.query(`SELECT * FROM pins WHERE map_id = $1 ORDER BY id;`, [map_id])
     .then((result) => {
       return (result.rows);
     })
@@ -85,7 +85,25 @@ const removePinById = function (pin) {                //input is the id number
     .catch((error) => {
       console.log(error.message);
     });
+};
 
+const updatePinInfo = function (pinInfo) {            //input is pbject
+  return db.query(`UPDATE pins SET
+  name = $1,
+  description = $2,
+  image = $3,
+  address = $4,
+  latitude = $5,
+  longitude = $6
+  WHERE id = $7
+  RETURNING *;`,
+  [pinInfo.name, pinInfo.description, pinInfo.image, pinInfo.address, pinInfo.latitude, pinInfo.longitude, pinInfo.pin_id])
+    .then((result) => {
+      return (result.rows[0]);
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
 };
 
 module.exports = {
@@ -96,5 +114,6 @@ module.exports = {
   getPinByUserID,
   getPinsByMapID,
   addPin,
-  removePinById
+  removePinById,
+  updatePinInfo
 };
