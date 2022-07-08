@@ -87,7 +87,7 @@ $.ajax({
 
       <div class="accordion-item accordionNum${pinId}">
         <h2 class="accordion-header" id="heading${pinId}">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          <button class="accordion-button collapsed accBtn${pinId}" type="button" data-bs-toggle="collapse"
             data-bs-target="#collapse${pinId}" aria-expanded="false" aria-controls="collapse${pinId}">
             ${pinName}
           </button>
@@ -176,20 +176,17 @@ $.ajax({
         // $('.accordion-content').slideUp();
 
         // $(`#collapse${pinId}`).collapse();
-        // $(`#collapse${pinId}`).collapse();
 
+        $(`.accBtn${pinId}`).click();
 
       });
-
-      // $('.accordBtn${pinId}').on('click', () => {
-
-
-      // })
 
 
     };
 
-    map.fitBounds(markerArray);
+    if (markerArray.length) {
+      map.fitBounds(markerArray);
+    }
 
     //end of loop
 
