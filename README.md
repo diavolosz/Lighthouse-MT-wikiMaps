@@ -35,10 +35,15 @@ Pinnet is built as a midterm project for Lighthouse Labs Web Development Program
 ## Page Previews
 
 ![Welcome Page](https://github.com/diavolosz/Lighthouse-MT-wikiMaps/blob/master/sampleImage/welcomePage.png)
+
 ![Adding New Pin](https://github.com/diavolosz/Lighthouse-MT-wikiMaps/blob/master/sampleImage/nePin.png)
+
 ![Main Map View](https://github.com/diavolosz/Lighthouse-MT-wikiMaps/blob/master/sampleImage/mapPinDisplay.png)
+
 ![Editing Pin](https://github.com/diavolosz/Lighthouse-MT-wikiMaps/blob/master/sampleImage/pinEdit.png)
+
 ![List of Maps](https://github.com/diavolosz/Lighthouse-MT-wikiMaps/blob/master/sampleImage/browse.png)
+
 ![Create a New Map](https://github.com/diavolosz/Lighthouse-MT-wikiMaps/blob/master/sampleImage/newMap.png)
 
 ## Getting Started
