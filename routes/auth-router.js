@@ -41,7 +41,7 @@ router.post("/", (req, res) => {
     return res.redirect(`/user/${id}`);
 
   }).catch((err) => {
-    console.log(err)
+    console.log(err);
     return res.render("login", { error: true });
   });
 

@@ -12,7 +12,6 @@ $.ajax({
     let favInfo = response[2] ? 'fa-solid' : 'fa-regular';
 
     //map placement
-
     function mapMaker(mapInfo) {
 
       let mapPlacement = `
@@ -26,14 +25,16 @@ $.ajax({
         </p>
       </span>
       <div id="map"></div>
-    </div>`
+    </div>
+    `;
 
       $('article').append(mapPlacement)
     };
 
     mapMaker(mapInfo);
 
-    let initialMapCentre = [mapInfo.latitude, mapInfo.longitude]
+    //inital map centering and generation
+    let initialMapCentre = [mapInfo.latitude, mapInfo.longitude];
     let map = L.map('map').setView(initialMapCentre, 16);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -44,12 +45,7 @@ $.ajax({
     const pinIcon = L.icon({
       iconUrl: '/image/pinIcon.png',
       iconSize: [60, 60]
-    })
-
-    //let pinPopUp = L.popup();
-
-
-
+    });
 
     //pins of interest name in accordion top with add button?
     let navName = `
@@ -66,9 +62,7 @@ $.ajax({
 
     $('.accordion').prepend(navName);
 
-
     let markerArray = [];
-
 
     //pin nav on left
     for (let pin of pinsInfo) {
@@ -81,10 +75,9 @@ $.ajax({
       let pinLat = pin.latitude;
       let pinLong = pin.longitude;
 
-      markerArray.push([pinLat, pinLong])
+      markerArray.push([pinLat, pinLong]);
 
       let pinItem = `
-
       <div class="accordion-item accordionNum${pinId}">
         <h2 class="accordion-header" id="heading${pinId}">
           <button class="accordion-button collapsed accBtn${pinId}" type="button" data-bs-toggle="collapse"
@@ -99,7 +92,6 @@ $.ajax({
           <img src='${pinImage}'>
           <h6 id="accAddress">Address: ${pinAddress}</h6>
 
-          <!-- Edit pin button -->
           <form action="/pin/${pinId}/edit/" method="POST">
             <input type="number" name="pin_id" value="${pinId}" hidden>
             <input type="number" name="map_id" value="${mapInfo.id}" hidden>
@@ -108,18 +100,14 @@ $.ajax({
             </button>
           </form>
 
-          <!-- Delete button triggering modal popup -->
           <button id='deleteButton' type="button" class="btn btn-danger pin_delete_btn" name='${pinName}' data-bs-toggle="modal" data-bs-target="#pinModal${pinId}">
             Delete ${pinName}
           </button>
-
 
           </div>
         </div>
       </div>
 
-
-      <!-- Modal placed outside of the accordion item-->
       <div class="modal fade in" id="pinModal${pinId}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -143,8 +131,6 @@ $.ajax({
           </div>
         </div>
       </div>
-
-
       `;
 
       $('.accordion').append(pinItem);
@@ -160,7 +146,6 @@ $.ajax({
 
         $(`.accBtn${pinId}`).click();
         $(`.accBtn${pinId}`)[0].scrollIntoView(true);
-
       });
 
       $(`.accBtn${pinId}`).on('click', function (e) {
@@ -169,16 +154,14 @@ $.ajax({
         map.flyTo([coord.lat, coord.lng], 17);
         marker.openPopup();
       })
-
-
     };
 
+    //reset map boundary if array is not empty
     if (markerArray.length) {
       map.fitBounds(markerArray);
-    }
+    };
 
     //end of loop
-
     $('#favouriteToggle').on('click', function (e) {
       const toggleIcon = () => {
         if ($(this).find('.fa-star').hasClass('fa-regular')) {
@@ -195,8 +178,5 @@ $.ajax({
       });
     });
 
-
-
-
   }
-})
+});

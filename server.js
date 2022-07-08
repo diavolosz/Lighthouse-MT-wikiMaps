@@ -47,40 +47,36 @@ app.use(express.static("public"));
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const userRouter = require("./routes/user-router");
-const mapRoutes = require("./routes/maps");
 const authRouter = require("./routes/auth-router");
 const logoutRouter = require("./routes/logout-router");
 const registerRouter = require("./routes/register-router");
-const mapIdRouter = require("./routes/mapId-router");
-const pinAddRouter = require("./routes/pinAdd-router");
 
+const mapRoutes = require("./routes/maps");
+const mapIdRouter = require("./routes/mapId-router");
+
+const pinAddRouter = require("./routes/pinAdd-router");
 const pinDeleteRouter = require("./routes/pinDelete-router");
 const pinEditRouter = require("./routes/pinEdit-router");
 
 const favouriteRouter = require("./routes/favourite-router");
 
-const usersRoutes = require("./routes/users");
-const widgetsRoutes = require("./routes/widgets");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/user/:id", userRouter(db));
-app.use("/maps", mapRoutes);
-app.use("/login", authRouter);
 app.use("/register", registerRouter);
-app.use("/map", mapIdRouter(db));
-app.use("/favourite", favouriteRouter);
-app.use("/pin/add", pinAddRouter(db));
+app.use("/login", authRouter);
+app.use("/logout", logoutRouter);
 
+app.use("/maps", mapRoutes);
+app.use("/map", mapIdRouter(db));
+
+app.use("/pin/add", pinAddRouter(db));
 app.use ("/pin/delete", pinDeleteRouter(db));
 app.use("/pin/:id/edit", pinEditRouter(db));
 
+app.use("/favourite", favouriteRouter);
 
-app.use("/logout", logoutRouter);
-
-
-app.use("/api/users", usersRoutes(db));
-app.use("/api/widgets", widgetsRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page

@@ -8,7 +8,7 @@ module.exports = (db) => {
   router.post('/:id', (req, res) => {
 
     let pinId = req.body.pin_id;
-    let mapId = req.body.map_id
+    let mapId = req.body.map_id;
 
     userQuery.getUserWithID(req.session.user_id).then((isLoggedIn) => {
       if(!isLoggedIn) {
@@ -30,8 +30,7 @@ module.exports = (db) => {
         });
       }
     });
-
   })
 
-  return router
-}
+  return router;
+};

@@ -29,7 +29,7 @@ module.exports = (db) => {
           .status(500)
           .json({ error: err.message });
       });
-  })
+  });
 
   router.get('/get/:map_name', (req, res) => {
     mapQuery.getMapByName(req.params.map_name)
@@ -43,14 +43,12 @@ module.exports = (db) => {
           .status(500)
           .json({ error: err.message });
       });
-  })
+  });
 
   router.post('/adding', (req, res) => {
 
     let pinInfo = req.body
     pinInfo['user_id'] = req.session.user_id;
-
-
 
     userQuery.getUserWithID(req.session.user_id).then((isLoggedIn) => {
       if(!isLoggedIn) {
@@ -68,12 +66,8 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
       }
-
-
     });
-
-
   });
 
   return router
-}
+};

@@ -10,14 +10,7 @@
       </p>
     </div>
   </a>
-
-  <% if(user) { %>
-
-  <% } %>
-
-
   <nav id="buttons">
-
   <!-- if user logged in -->
   <% if(user) { %>
     <form action="/maps/new" method="GET">
@@ -30,7 +23,6 @@
       <button type="submit" class="eachButton" id="logout">Logout</button>
     </form>
     <% } else { %>
-
   <!-- if user does not have an account (still can view map)-->
     <form action="/login" method="GET">
       <button type="submit" class="eachButton" id="login">Login</button>
@@ -39,7 +31,5 @@
       <button type="submit" class="eachButton" id="register">Register</button>
     </form>
     <% } %>
-
-
   </nav>
 </header>

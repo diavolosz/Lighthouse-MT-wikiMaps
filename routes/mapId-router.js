@@ -10,6 +10,7 @@ module.exports = (db) => {
   router.get("/:id", (req, res) => {
     let user = null;
     let mapInfo;
+
     userQuery.getUserWithID(req.session.user_id).then((result) => {
       if (result) {
         user = result;
@@ -31,6 +32,7 @@ module.exports = (db) => {
 
         res.render('template_mapId', templateVar);
       })
+
       .catch(err => {
         res
           .status(500)
@@ -43,10 +45,10 @@ module.exports = (db) => {
     const pins = pinQuery.getPinsByMapID(req.params.id)
     const fav = favQuery.getFavouriteByMapAndUser(req.session.user_id, req.params.id);
 
-    Promise.all ([map, pins, fav])
-    .then ((values) => {
-      res.json (values)
-    })
+    Promise.all([map, pins, fav])
+      .then((values) => {
+        res.json(values)
+      })
 
       .catch(err => {
         res
@@ -55,8 +57,5 @@ module.exports = (db) => {
       });
   });
 
-
   return router;
 };
-
-

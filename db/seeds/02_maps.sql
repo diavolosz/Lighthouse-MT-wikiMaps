@@ -37,5 +37,5 @@ INSERT INTO maps (name, user_id, latitude, longitude) VALUES ('Strange Objects',
 INSERT INTO maps (name, user_id, latitude, longitude) VALUES ('Haunted Areas', 1, 43.656664, -79.384113);
 INSERT INTO maps (name, user_id, latitude, longitude) VALUES ('Buildings with Terrible Art', 2, 43.657580, -79.389435);
 INSERT INTO maps (name, user_id, latitude, longitude) VALUES ('New Houses to Check Out', 3, 43.794491, -79.325911);
-INSERT INTO maps (name, user_id, latitude, longitude) VALUES ('Old b=Buildings to Never Rent From', 4, 43.852514, -79.433027);
+INSERT INTO maps (name, user_id, latitude, longitude) VALUES ('Old Buildings to Never Rent From', 4, 43.852514, -79.433027);
 INSERT INTO maps (name, user_id, latitude, longitude) VALUES ('Water Parks', 1, 43.874916, -79.278961);

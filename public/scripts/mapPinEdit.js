@@ -2,8 +2,6 @@ let beforeMapName = $('#title').text();
 let subString = beforeMapName.substring(0, beforeMapName.indexOf('I'));
 let pinName = (subString.substring(6)).trim();
 
-
-
 $.ajax({
   type: 'GET',
   url: 'get/' + pinName,
@@ -37,6 +35,7 @@ $.ajax({
       $('form input[name=latitude]').val(pin.latlng.lat);
       $('form input[name=longitude]').val(pin.latlng.lng);
     }
+
     map.on('click', onMapClick);
 
     //generate pin marker
@@ -53,8 +52,5 @@ $.ajax({
       $('form input[name=latitude]').val(position.lat);
       $('form input[name=longitude]').val(position.lng);
     })
-
   }
-
-})
-
+});

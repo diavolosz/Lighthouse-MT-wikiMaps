@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Welcome Page</title>
+  <title>Edit pin</title>
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -13,7 +13,9 @@
   <script type="text/javascript" src="/scripts/mapPinEdit.js" defer></script>
 
   <!-- external script: font awesome-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
   <!-- external css for fading from w3shool -->
@@ -21,20 +23,15 @@
 
   <!-- map leaflet -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
-  integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
-  crossorigin=""/>
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+    crossorigin="" />
   <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
-  integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
-  crossorigin=""></script>
+    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+    crossorigin=""></script>
 
 </head>
 
 <body>
-
-  <header>
-
-  </header>
-
   <section>
     <div id="container">
       <header>
@@ -43,60 +40,46 @@
         </p>
         <p id="title">Modify <%=pinInfo.name%> Info</p>
       </header>
-
-
       <form method="POST" action="/pin/${pinId}/edit/editing">
-
         <div>
           <label for="mapName">Name</label>
-          <input type="text" id="mapName" placeholder="<%= pinInfo.name %>" name="name" required>
+          <input type="text" id="mapName" value="<%= pinInfo.name %>" name="name" required>
         </div>
-
         <div>
           <label for="address">Address</label>
-          <input type="text" id="address" placeholder="<%= pinInfo.address %>" name="address" required>
+          <input type="text" id="address" value="<%= pinInfo.address %>" name="address" required>
         </div>
-
         <div>
           <label for="description">Description</label>
-          <textarea type="text" id="description" placeholder="<%= pinInfo.description %>" name="description" cols="50" rows="3" required></textarea>
+          <textarea type="text" id="description" name="description" cols="50"
+            rows="3" required><%= pinInfo.description %></textarea>
         </div>
-
         <div>
           <label for="image">Image</label>
-          <input type="text" id="image" placeholder="<%= pinInfo.image %>" name="image" required>
+          <input type="text" id="image" value="<%= pinInfo.image %>" name="image" required>
         </div>
-
         <div>
           <label class="text-muted mb-1" for="lat">Latitude</label>
-          <input type="number" required  class="form-control mb-3 text-muted" name="latitude" min="-90" max="90" value="" step="any">
+          <input type="number" required class="form-control mb-3 text-muted" name="latitude" min="-90" max="90" value=""
+            step="any">
         </div>
-
         <div>
           <label class="text-muted mb-1" for="long">Longitude</label>
-          <input type="number" required class="form-control text-muted" name="longitude" min="-180" max="180" value="" step="any">
+          <input type="number" required class="form-control text-muted" name="longitude" min="-180" max="180" value=""
+            step="any">
         </div>
-
         <div>
           <input type="number" name="map_id" value="<%=mapId%>" hidden>
           <input type="number" name="pin_id" value="<%=pinInfo.id%>" hidden>
           <button type="submit" class="form-control btn btn-success my-3">Update</button>
         </div>
-
       </form>
     </div>
-
   </section>
-
-    <div>
-      <span id="mapGuide">Click on map to determine latitude and longtitude</span>
-      <div id="map"></div>
-    </div>
-
-
-
+  <div>
+    <span id="mapGuide">Click on map to determine latitude and longtitude</span>
+    <div id="map"></div>
+  </div>
 </body>
 
 </html>
-
-

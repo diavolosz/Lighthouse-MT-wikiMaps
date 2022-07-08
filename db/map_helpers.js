@@ -83,7 +83,7 @@ const getMapById = function (map_id) {
       console.log(error.message);
     });
 
-}
+};
 
 const getMapByPinName = function (pin_name) {
   return db.query(`SELECT *
@@ -97,7 +97,7 @@ const getMapByPinName = function (pin_name) {
       console.log(error.message);
     });
 
-}
+};
 
 module.exports = {
   getAllMaps,

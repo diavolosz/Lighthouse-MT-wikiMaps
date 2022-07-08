@@ -9,11 +9,11 @@
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/maps.css" type="text/css" />
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/app.js" defer></script>
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
   integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
@@ -29,12 +29,8 @@
 
 </head>
 
-
-
-
 <body>
   <%- include('partials/_header') %>
-
   <section >
     <% for (let map of maps) { %>
       <div class="map-item text-center d-flex justify-content-center align-items my-3">
@@ -45,7 +41,7 @@
               <i class="fa-solid fa-magnifying-glass-location"></i>
             </a>
             <div id="bottomContainer" >
-              <a href="/user/<%= map.creator_id %>"><h6 class="text-muted">@<%= map.creator %></h6></a>
+              <span><h6 class="text-muted">@<%= map.creator %></h6></span>
               <div id="icon">
                 <div id="pin">
                   <i class="fa-solid fa-map-pin h5 me-1"></i>

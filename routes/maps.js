@@ -1,9 +1,7 @@
 const express = require('express');
 const router  = express.Router();
-
 const userQuery = require("../db/user_helpers");
 const mapQuery = require("../db/map_helpers");
-
 const helpers = require("../lib/helpers");
 
 router.get('/', (req, res) => {
@@ -11,7 +9,7 @@ router.get('/', (req, res) => {
   let userInfo = null
   userQuery.getUserWithID(req.session.user_id).then((result) => {
     if (result) {
-      userInfo = result
+      userInfo = result;
     }
   })
 
@@ -59,17 +57,9 @@ router.post('/', (req, res) => {
     }).then(result => {
 
       return res.redirect(`/map/${result.id}`);
-
     });
   });
-
-
 });
-// router.post('/', (req, res) => {
-//   console.log("hi")
-//   res.render("maps_new");
-// });
-
 
 
 module.exports = router;
