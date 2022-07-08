@@ -34,16 +34,22 @@ Pinnet is built as a midterm project for Lighthouse Labs Web Development Program
 
 ## Page Previews
 
+### Welcome Page
 ![Welcome Page](https://github.com/diavolosz/Lighthouse-MT-wikiMaps/blob/master/sampleImage/welcomePage.png)
 
-![Adding New Pin](https://github.com/diavolosz/Lighthouse-MT-wikiMaps/blob/master/sampleImage/nePin.png)
+### Adding New Pin
+![Adding New Pin](https://github.com/diavolosz/Lighthouse-MT-wikiMaps/blob/master/sampleImage/newPin.png)
 
+### Main Map View
 ![Main Map View](https://github.com/diavolosz/Lighthouse-MT-wikiMaps/blob/master/sampleImage/mapPinDisplay.png)
 
+### Editing Pin
 ![Editing Pin](https://github.com/diavolosz/Lighthouse-MT-wikiMaps/blob/master/sampleImage/pinEdit.png)
 
+### List of Maps
 ![List of Maps](https://github.com/diavolosz/Lighthouse-MT-wikiMaps/blob/master/sampleImage/browse.png)
 
+### Create a New Map
 ![Create a New Map](https://github.com/diavolosz/Lighthouse-MT-wikiMaps/blob/master/sampleImage/newMap.png)
 
 ## Getting Started
@@ -51,8 +57,9 @@ Pinnet is built as a midterm project for Lighthouse Labs Web Development Program
 1. Install dependencies using the `npm install` command.
 2. Start the web server using the `npm run local` command. The app will be served at http://localhost:8080/.
 3. Go to http://localhost:8080/ in your browser.
-4. Explore the site! Maybe make your own maps 👀
-4. Begin exploring the city! 🗺
+4. Run the command 'npm run db:reset' to generate a sample database.
+5. Explore the site! Maybe make your own maps 👀
+6. Begin exploring the city! 🗺
 
 ## Future Feature Implementation
 
