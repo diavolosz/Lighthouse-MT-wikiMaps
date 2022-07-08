@@ -158,28 +158,17 @@ $.ajax({
       marker.on('click', function (e) {
         map.flyTo(e.latlng, 17);
 
-
-        // if ($(`#collapse${pinId}`).classList.contains('collapsed')) {
-        //   $(`#collapse${pinId}`).removeClass('collapsed')
-        // } else {
-        //   $(`#collapse${pinId}`).addClass('collapsed')
-        // }
-
-
-
-
-
-        // $('.accordion-content').slideUp();
-        // $(`#collapse${pinId}`).slideToggle();
-
-
-        // $('.accordion-content').slideUp();
-
-        // $(`#collapse${pinId}`).collapse();
-
         $(`.accBtn${pinId}`).click();
+        $(`.accBtn${pinId}`)[0].scrollIntoView(true);
 
       });
+
+      $(`.accBtn${pinId}`).on('click', function (e) {
+        let coord = marker.getLatLng()
+
+        map.flyTo([coord.lat, coord.lng], 17);
+        marker.openPopup();
+      })
 
 
     };
