@@ -26,20 +26,20 @@ Pinnet is built as a midterm project for Lighthouse Labs Web Development Program
 
 ## Entity Relationship Diagram (ERD)
 
-![ERD]()
+![ERD](https://github.com/diavolosz/Lighthouse-MT-wikiMaps/blob/master/sampleImage/ERD.png)
 
 ## Wire Frames
 
-![Wire Frame]()
+![Wire Frame](https://github.com/diavolosz/Lighthouse-MT-wikiMaps/blob/master/sampleImage/Final_mock_up.png)
 
 ## Page Previews
 
-![Welcome Page]()
-![Adding New Pin]()
-![Main Map View]()
-![Editing Pin]()
-![List of Maps]()
-![Create a New Map]()
+![Welcome Page](https://github.com/diavolosz/Lighthouse-MT-wikiMaps/blob/master/sampleImage/welcomePage.png)
+![Adding New Pin](https://github.com/diavolosz/Lighthouse-MT-wikiMaps/blob/master/sampleImage/nePin.png)
+![Main Map View](https://github.com/diavolosz/Lighthouse-MT-wikiMaps/blob/master/sampleImage/mapPinDisplay.png)
+![Editing Pin](https://github.com/diavolosz/Lighthouse-MT-wikiMaps/blob/master/sampleImage/pinEdit.png)
+![List of Maps](https://github.com/diavolosz/Lighthouse-MT-wikiMaps/blob/master/sampleImage/browse.png)
+![Create a New Map](https://github.com/diavolosz/Lighthouse-MT-wikiMaps/blob/master/sampleImage/newMap.png)
 
 ## Getting Started
 
