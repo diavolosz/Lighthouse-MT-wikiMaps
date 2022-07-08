@@ -26,4 +26,7 @@ $(document).ready(function() {
 
   // Bind click event handler to map
   map.on('click', onMapClick);
+
+  //GEOLET code to add button for approximate location
+  L.geolet({ position: 'bottomleft' }).addTo(map);
 });
