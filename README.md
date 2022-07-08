@@ -6,6 +6,8 @@ Pinnet is a web app that can share and display maps with many different points o
 
 Open source library used: Leaflet<sup>1</sup>
 
+Geolocation script used: Geolet<sup>2</sup>
+
 Pinnet is built as a midterm project for Lighthouse Labs Web Development Programe by:
 
 - Tha God (Ryan)
@@ -64,7 +66,6 @@ Pinnet is built as a midterm project for Lighthouse Labs Web Development Program
 ## Future Feature Implementation
 
 - Delete created maps
-- auto-locate user 
 
 
 
@@ -80,3 +81,4 @@ Pinnet is built as a midterm project for Lighthouse Labs Web Development Program
 
 
 1: Refer to leaflet: https://leafletjs.com/
+2: Geolet created by Ruben Holthuijsen: https://github.com/rhlt
